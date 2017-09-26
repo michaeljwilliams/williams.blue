@@ -148,7 +148,7 @@ a,
 li,
 i,
 time {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", "Helvetica Neue", "Verdana", sans-serif;
     word-wrap: break-word;
     font-weight: 400;
 }
@@ -164,7 +164,7 @@ time {
 
 code {
     font-family: "Menlo", "Lucida Console", monospace;
-    font-size: 1.1rem;
+    font-size: 1rem;
     word-wrap: break-word;
 }
 
@@ -226,7 +226,7 @@ a:link:not(.u-plainLink),
     /* blue with more green 
     color: #009cff; */
     color: #006fff;
-    border-bottom: 1px dotted;
+    border-bottom: 2px dotted;
 }
 
 a:hover:not(.u-plainLink),
@@ -235,7 +235,7 @@ a:active:not(.u-plainLink),
 .u-pseudoLink:hover,
 .u-pseudoLink:focus,
 .u-pseudoLink:active {
-    border-bottom: 1px solid;
+    border-bottom: 2px solid;
 }
 
 a:visited:not(.u-plainLink) {
@@ -251,13 +251,13 @@ a:visited:not(.u-plainLink) {
 }
 
 .navLink {
-    border-bottom: 1px dotted;
+    border-bottom: 2px dotted;
 }
 
 .navLink:hover,
 .navLink:focus,
 .navLink:active {
-    border-bottom: 1px solid;
+    border-bottom: 2px solid;
 }
 
 /* COLOR **********************************************************************/
