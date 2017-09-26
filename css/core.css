@@ -1,0 +1,387 @@
+/* INIT ***********************************************************************/
+pre,textarea{overflow:auto}html,table{border-collapse:collapse}audio:not([controls]),template{display:none}details,main,summary{display:block}input[type=number]{width:auto}input[type=search]{-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}progress{display:inline-block}small{font-size:75%}[unselectable]{user-select:none}*,::after,::before{box-sizing:inherit;text-decoration:inherit;vertical-align:inherit;border-style:solid;border-width:0}*{color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;line-height:inherit;border-collapse:inherit}*,:after,:before,body,html{margin:0;padding:0;outline:0;border:none}:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;text-size-adjust:100%;box-sizing:border-box;cursor:default;font-family:sans-serif;line-height:1.5em;text-rendering:optimizeLegibility;vertical-align:top}a{text-decoration:none;border-bottom:dotted;}button,input,select,textarea{background:0 0}code,kbd,pre,samp{font-family:monospace,monospace}input{min-height:1.5em}nav ol,nav ul,ol,ul{list-style:none}select{-moz-appearance:none;-webkit-appearance:none}select::-ms-expand{display:none}select::-ms-value{color:currentColor}textarea{resize:vertical}::selection{color:#fff;background-color:#444;text-shadow:none}@media screen{[hidden~=screen]{display:inherit}[hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0;border:none}button{overflow:visible}table{border-spacing:0}:not(body){background-repeat:no-repeat;background-position:50%;background-size:cover}[hidden]{display:none!important}
+
+/* LAYOUT *********************************************************************/
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.selfie {
+    width: 70vw;
+    height: 70vw;
+    display: block;
+    max-width: 16rem;
+    max-height: 16rem;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 50%;
+    border: 8px solid;
+    background-image: url("/img/selfie.jpg");
+    background-size: 105% 105%;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: content-box;
+    border-color: #006fff;
+}
+
+.iconSprite {
+    margin-right: 1rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+.iconSprite::before {
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    margin-right: .5rem;
+    margin-left: 1rem;
+    margin-top: -.4rem;
+    background: url(/img/iconSprite.svg);
+    background-size: auto 2rem;
+    background-repeat: no-repeat
+}
+.iconSprite-github::before {
+    background-position: 0 0
+}
+.iconSprite-spotify::before {
+    background-position: -2rem 0
+}
+.iconSprite-email::before {
+    background-position: -4rem 0
+}
+
+pre {
+    overflow: scroll;
+}
+
+li {
+    display: block; 
+}
+main p {
+    margin-bottom: 3rem;
+}
+
+main {
+    min-height: calc(100% - 8rem);
+}
+
+main,
+nav {
+    max-width: 44rem;
+    margin: 0 auto 0 auto;
+    padding: 1.3rem 1rem 1rem 1rem;
+}
+
+header, footer {
+    min-height: 4rem;
+    width: 100%;
+}
+
+header {
+    margin-bottom: 1rem;
+}
+.navLink, .masthead {
+    display: inline-block;
+}
+.masthead:not(h1) {
+    margin-right: 8%;
+}
+.navLink {
+    margin-right: 4%;
+}
+
+footer {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.postStart {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.postList h1 {
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 3.6rem;
+    display: block;
+    margin-top: 1rem;
+}
+.postList a {
+    color: #006fff;
+    border-bottom: 1px dotted;
+    line-height: 1.6rem;
+    font-size: 1.2rem;
+}
+.postList li {
+    margin-bottom: 3rem;
+}
+.postList p {
+    margin-bottom: .5rem;
+    display: block;
+}
+.postList time {
+    display: block;
+}
+
+main section {
+    margin-bottom: 4rem;
+}
+
+.aboutMeSection p {
+    margin-bottom: 0;
+}
+
+/* FONTS **********************************************************************/
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+i,
+time {
+    font-family: "Open Sans", sans-serif;
+    word-wrap: break-word;
+    font-weight: 400;
+}
+
+p,
+a,
+li,
+i,
+time {
+    line-height: 1.6rem;
+    font-size: 1.2rem;
+}
+
+code {
+    font-family: "Menlo", "Lucida Console", monospace;
+    font-size: .9rem;
+    word-wrap: break-word;
+}
+
+code {
+    display: block;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow: scroll
+}
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+i code,
+a code,
+li code {
+    display: inline;
+    padding-left: .3rem;
+    padding-right: .3rem;
+    padding-top: .1rem;
+    padding-bottom: .1rem;
+    vertical-align: middle;
+    margin: 0;
+    border-radius: .3rem
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 3.6rem;
+}
+h2 {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+}
+h3 {
+    font-size: 1.4rem;
+}
+
+.navLink,
+.masthead {
+   font-weight: 200;
+}
+.navLink {
+    line-height: 1.6rem;
+}
+.masthead {
+    line-height: 1.7rem;
+}
+
+/* LINKS **********************************************************************/
+
+a:link:not(.u-plainLink),
+.u-pseudoLink {
+    /* blue with more green 
+    color: #009cff; */
+    color: #006fff;
+    border-bottom: 1px dotted;
+}
+
+a:hover:not(.u-plainLink),
+a:focus:not(.u-plainLink),
+a:active:not(.u-plainLink),
+.u-pseudoLink:hover,
+.u-pseudoLink:focus,
+.u-pseudoLink:active {
+    border-bottom: 1px solid;
+}
+
+a:visited:not(.u-plainLink) {
+    color: #8a8a8a;
+}
+
+.u-plainLink,
+.u-plainLink:visited,
+.u-plainLink:hover,
+.u-plainLink:focus,
+.u-plainLink:active {
+    border: none;
+}
+
+.navLink {
+    border-bottom: 1px dotted;
+}
+
+.navLink:hover,
+.navLink:focus,
+.navLink:active {
+    border-bottom: 1px solid;
+}
+
+/* COLOR **********************************************************************/
+body {
+    /*
+    background-color: #0770EA;
+    background: linear-gradient(180deg, #078fea, #001a3a);
+    */
+}
+
+main {
+    background-color: white;
+}
+
+html {
+    color: black;
+}
+
+code {
+    background-color: #333;
+    color: white;
+}
+
+header, footer {
+    /* blue with more green
+    background-color: #009cff; */
+    background-color: #006fff;
+    color: white;
+}
+
+.postList time,
+.postStart time {
+    color: #888888;
+}
+
+header h1,
+header h2,
+header h3,
+header h4,
+header h5,
+header h6,
+header p,
+header a,
+header li,
+header i,
+header time,
+footer h1,
+footer h2,
+footer h3,
+footer h4,
+footer h5,
+footer h6,
+footer p,
+footer a,
+footer li,
+footer i,
+footer time,
+.navLink {
+    color: white;
+}
+
+/* SMALL SCREENS **************************************************************/
+@media (max-width: 36rem) {
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 400;
+        line-height: 3rem;
+    }
+    h2 {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    p,
+    a,
+    li,
+    i,
+    time {
+        line-height: 1.6rem;
+        font-size: 1rem;
+    }
+
+    .masthead {
+        display: block;
+        padding-right: 0;
+    }
+    .navLink {
+        line-height: 1.6rem;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+}
+/* UTILITIES ******************************************************************/
+
+/* Utilities defined in other parts of the stylesheet:
+* .u-pseudoLink: something that looks (and probably acts) like a link, but isn't really an <a>
+* .u-plainLink: a look that looks like normal text
+*/
+
+.u-left {
+    float: left;
+}
+.u-right {
+    float: right;
+}
+.u-center {
+    text-align: center;
+}
+
+.u-_isAbsent {
+    display: none;
+}
+.u-_isInvisible {
+    visibility: hidden;
+}
