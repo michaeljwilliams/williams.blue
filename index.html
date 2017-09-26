@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Michael Williams</title>
+    <meta content="Michael Williams" name="description">
+    <meta content="Michael Williams" name="author">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <link href="/img/favicon.png" rel="icon" type="icon">
+</head>
+
+<body>
+    <h1 class="noJSWarning">Michael Williams<br>Sorry, this site requires JavaScript to work properly. Please enable JavaScript.</h1>
+    <!-- Removes the no-JS warning if JS is enabled. -->
+    <script>(function(){var foo = document.querySelector(".noJSWarning"); foo.parentNode.removeChild(foo);})();</script>
+     
+    <header></header>
+
+    <main></main>
+
+    <footer></footer>
+
+    <!-- JS that should run before content loads. -->
+    <!-- This must come after the main structural elements above because these are referenced in the code. -->
+
+        <!-- PAGE-SPECIFIC ACTIONS -->
+        <script>
+        ////////////////////////////////////////////////////////////////////////
+            // The following functions come before early.js because they are called in that script, and so must
+            // already be defined.
+            function pageSpecificActions() {
+                loadContentIntoElement("/index_.html", "main", runAfterMainLoads);
+            }
+            function runAfterMainLoads() {
+                function loadRecentPosts(postList) {
+                    var parser = new DOMParser(); // Create a parser for the content
+                    postList = parser.parseFromString(postList,"text/xml") // Parse content to create an xml object
+                    var posts = postList.querySelectorAll("li"); // Get the list items
+                    posts = Array.from(posts).slice(0,3); // Convert to array and slice to first 3 posts
+
+                    var postsHTML = ""; // Holds the HTML of the posts
+                    // Must be empty string or it'll say "undefined"
+
+                    // First 3 posts
+                    for(i = 0; i <= 2; i++) {
+                        if(posts[i]) postsHTML += posts[i].outerHTML; // If post exists, add its HTML
+                    }
+                   
+                    var recentPostsOl = document.querySelector(".postList");
+                    recentPostsOl.innerHTML = postsHTML; // Add the posts to the page
+                }
+                asyncGet("/posts/post_list.html", false, loadRecentPosts);
+            }
+        ////////////////////////////////////////////////////////////////////////
+        </script>
+
+        <!-- This script loads the page/template. -->
+        <script src="/js/early.js"></script>
+
+    <link href="/css/core.css" rel="stylesheet">
+    <script src="/js/core.js"></script>
+
+</body>
+</html>
