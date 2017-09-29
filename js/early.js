@@ -66,11 +66,10 @@ function asyncGet(url, isJson, cb, errcb) {
 // [addOrReplace] determines whether to simply add the content or replace the destination content.
 // [addOrReplace] should be a string of "add" or "replace". It defaults to add
 // example: insertContent("main", "<h1>hello!</h1>"); // inserts an <h1> into the <main> element
-
-function insertContent(where, content, addOrReplace = "add") {
+function insertContent(where, content, addOrReplace) { // Safari 9 doesn't support default parameters
     if(addOrReplace === "replace") {
         document.querySelector(where).innerHTML = content;
-    } else if(addOrReplace === "add" ) {
+    } else if(addOrReplace !== "replace" ) {
         document.querySelector(where).innerHTML += content;
     }
 }
@@ -92,10 +91,10 @@ function loadPage() {
     loadContentIntoElement("/template/header.html", "header");
     loadContentIntoElement("/template/footer.html", "footer");
 
-    // If a hash is present in the url, attempt to load that page.
+    // If a hash with a slash (#/) is present in the url, attempt to load the content at the url in the hash.
     (function pickMainContent(content) {
         var hash = window.location.hash.substring(1);
-        if(hash.length !== 0) {
+        if(hash.length !== 0 && hash.substring(0,1) === "/") {
             loadContentIntoElement(hash, "main", runAfterMainLoads);
         } else {
             pageSpecificActions();
