@@ -1,5 +1,14 @@
 /* INIT ***********************************************************************/
-pre,textarea{overflow:auto}html,table{border-collapse:collapse}audio:not([controls]),template{display:none}details,main,summary{display:block}input[type=number]{width:auto}input[type=search]{-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}progress{display:inline-block}small{font-size:75%}[unselectable]{user-select:none}*,::after,::before{box-sizing:inherit;text-decoration:inherit;vertical-align:inherit;border-style:solid;border-width:0}*{color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;line-height:inherit;border-collapse:inherit}*,:after,:before,body,html{margin:0;padding:0;outline:0;border:none}:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;text-size-adjust:100%;box-sizing:border-box;cursor:default;font-family:sans-serif;line-height:1.5em;text-rendering:optimizeLegibility;vertical-align:top}a{text-decoration:none;border-bottom:dotted;}button,input,select,textarea{background:0 0}code,kbd,pre,samp{font-family:monospace,monospace}input{min-height:1.5em}nav ol,nav ul,ol,ul{list-style:none}select{-moz-appearance:none;-webkit-appearance:none}select::-ms-expand{display:none}select::-ms-value{color:currentColor}textarea{resize:vertical}::selection{color:#fff;background-color:#444;text-shadow:none}@media screen{[hidden~=screen]{display:inherit}[hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0;border:none}button{overflow:visible}table{border-spacing:0}:not(body){background-repeat:no-repeat;background-position:50%;background-size:cover}[hidden]{display:none!important}
+pre,textarea{overflow:auto}html,table{border-collapse:collapse}audio:not([controls]),template{display:none}details,main,summary{display:block}input[type=number]{width:auto}input[type=search]{-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}progress{display:inline-block}small{font-size:75%}[unselectable]{user-select:none}*,::after,::before{box-sizing:inherit;text-decoration:inherit;vertical-align:inherit;border-style:solid;border-width:0}*{color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;line-height:inherit;border-collapse:inherit}*,:after,:before,body,html{margin:0;padding:0;outline:0;border:none}:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;text-size-adjust:100%;box-sizing:border-box;cursor:default;font-family:sans-serif;line-height:1.5em;text-rendering:optimizeLegibility;vertical-align:top}a{text-decoration:none;border-bottom:dotted;}button,input,select,textarea{background:0 0}code,kbd,pre,samp{font-family:monospace,monospace}input{min-height:1.5em}nav ol,nav ul, ol, ul{list-style:none}select{-moz-appearance:none;-webkit-appearance:none}select::-ms-expand{display:none}select::-ms-value{color:currentColor}textarea{resize:vertical}::selection{color:#fff;background-color:#444;text-shadow:none}@media screen{[hidden~=screen]{display:inherit}[hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0;border:none}button{overflow:visible}table{border-spacing:0}:not(body){background-repeat:no-repeat;background-position:50%;background-size:cover}[hidden]{display:none!important}
+sup, sup a, sup p {
+    vertical-align: 10% !important;
+    font-size: 80% !important;
+    text-decoration: none !important;
+    border: none !important;
+}
+strong {
+    vertical-align: baseline;
+}
 
 /* LAYOUT *********************************************************************/
 html, body {
@@ -52,17 +61,6 @@ html, body {
     background-position: -72px 0;
 }
 
-pre {
-    overflow: scroll;
-}
-
-li {
-    display: block; 
-}
-main p {
-    margin-bottom: 3rem;
-}
-
 main {
     min-height: calc(100% - 8rem);
 }
@@ -99,11 +97,23 @@ footer {
     padding: 1rem;
 }
 
+.blogPost div {
+    margin-bottom: 3rem;
+}
+.blogPost p, .blogPost ul, .blogPost ol {
+    padding-bottom: 1rem;
+}
+.blogPost ul li::before { /* If we do it the normal way, the bullet is way too big. */
+    content:"• ";
+}
+.blogPost ol {
+    list-style: decimal inside none;
+}
+
 .postStart {
     text-align: center;
     margin-bottom: 2rem;
 }
-
 .postList h1 {
     font-size: 2.4rem;
     font-weight: 400;
@@ -193,7 +203,7 @@ i code,
 a code,
 li code {
     display: inline;
-    padding: .2rem .4rem;
+    padding: .1rem .4rem;
     vertical-align: top;
     margin: 0;
     border-radius: .3rem
@@ -225,43 +235,29 @@ h3 {
 
 /* LINKS **********************************************************************/
 
-a:link:not(.u-plainLink),
-.u-pseudoLink {
+a:link:not(.u-plainLink) {
     /* blue with more green 
     color: #009cff; */
     color: #006fff;
     border-bottom: 2px dotted;
 }
-
 a:hover:not(.u-plainLink),
 a:focus:not(.u-plainLink),
-a:active:not(.u-plainLink),
-.u-pseudoLink:hover,
-.u-pseudoLink:focus,
-.u-pseudoLink:active {
+a:active:not(.u-plainLink) {
+    color: #006fff;
     border-bottom: 2px solid;
 }
-
 a:visited:not(.u-plainLink) {
     color: #8a8a8a;
-}
-
-.u-plainLink,
-.u-plainLink:visited,
-.u-plainLink:hover,
-.u-plainLink:focus,
-.u-plainLink:active {
-    border: none;
-}
-
-.navLink {
     border-bottom: 2px dotted;
 }
 
+.navLink:link,
 .navLink:hover,
 .navLink:focus,
-.navLink:active {
-    border-bottom: 2px solid;
+.navlink:active,
+.navLink:visited {
+    color: white !important;
 }
 
 /* COLOR **********************************************************************/
@@ -281,13 +277,11 @@ html {
 }
 
 code {
-    background-color: #333;
-    color: white;
+    background-color: black;
+    color: #65ff46;
 }
 
 header, footer {
-    /* blue with more green
-    background-color: #009cff; */
     background-color: #006fff;
     color: white;
 }
@@ -295,32 +289,6 @@ header, footer {
 .postList time,
 .postStart time {
     color: #888888;
-}
-
-header h1,
-header h2,
-header h3,
-header h4,
-header h5,
-header h6,
-header p,
-header a,
-header li,
-header i,
-header time,
-footer h1,
-footer h2,
-footer h3,
-footer h4,
-footer h5,
-footer h6,
-footer p,
-footer a,
-footer li,
-footer i,
-footer time,
-.navLink {
-    color: white;
 }
 
 /* SMALL SCREENS **************************************************************/
@@ -365,24 +333,46 @@ footer time,
 }
 /* UTILITIES ******************************************************************/
 
-/* Utilities defined in other parts of the stylesheet:
-* .u-pseudoLink: something that looks (and probably acts) like a link, but isn't really an <a>
-* .u-plainLink: a look that looks like normal text
-*/
-
 .u-left {
-    float: left;
+    float: left !important;
 }
 .u-right {
-    float: right;
+    float: right !important;
 }
 .u-center {
-    text-align: center;
+    text-align: center !important;
 }
 
-.u-_isAbsent {
-    display: none;
+/* Something that looks (and probably acts) like a link, but isn't really an <a> */
+.u-pseudoLink {
+    color: #006fff;
+    border-bottom: 2px dotted;
 }
+.u-pseudoLink:hover,
+.u-pseudoLink:focus,
+.u-pseudoLink:active {
+    border-bottom: 2px solid;
+}
+
+/* .u-plainLink: a link that looks like normal text */
+.u-plainLink,
+.u-plainLink:visited,
+.u-plainLink:hover,
+.u-plainLink:focus,
+.u-plainLink:active {
+    border: none  !important;
+}
+
+
+
+/* State utility classes - these are meant to be added or removed to turn them on and off */
+
+/* Use to hide things and remove them from document flow */
+.u-_isAbsent {
+    display: none !important;
+}
+
+/* Use to hide things */
 .u-_isInvisible {
-    visibility: hidden;
+    visibility: hidden !important;
 }
