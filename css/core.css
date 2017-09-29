@@ -103,11 +103,19 @@ footer {
 .blogPost p, .blogPost ul, .blogPost ol {
     padding-bottom: 1rem;
 }
+.blogPost ul {
+    position: relative;
+}
+.blogPost li {
+    padding: 0 1rem;
+}
 .blogPost ul li::before { /* If we do it the normal way, the bullet is way too big. */
-    content:"• ";
+    content:"•";
+    position: absolute;
+    left: 0;
 }
 .blogPost ol {
-    list-style: decimal inside none;
+    list-style: decimal outside none;
 }
 
 .postStart {
