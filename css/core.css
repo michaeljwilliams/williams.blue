@@ -121,6 +121,12 @@ footer {
 .blogPost ol {
     list-style: decimal outside none;
 }
+ol.footnotes {
+    list-style: decimal inside none;
+}
+ol.footnotes li {
+    margin: 0;
+}
 
 .postStart {
     text-align: center;
@@ -399,7 +405,6 @@ header, footer {
 }
 
 .u-_lookAtMe {
-    mix-blend-mode: difference;
     animation-name: lookAtMe;
     animation-duration: 1.5s; 
     animation-timing-function: linear; 
@@ -408,8 +413,10 @@ header, footer {
     @keyframes lookAtMe {
         0%,100% {
             background-color: inherit;
+            color: inherit;
         }
         10%,80% {
-            background-color: #007fff;
+            background-color: #ff7000;
+            color: white;
         }
     }
