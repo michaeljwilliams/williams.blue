@@ -97,7 +97,7 @@ footer {
     padding: 1rem;
 }
 
-.blogPost div {
+.paragraphGroup {
     margin-bottom: 3rem;
 }
 .blogPost p, .blogPost ul, .blogPost ol {
@@ -106,8 +106,12 @@ footer {
 .blogPost ul {
     position: relative;
 }
-.blogPost li {
+.blogPost ul li {
     padding: 0 1rem;
+}
+.blogPost ol li {
+    margin: 0 1.2rem;
+    padding: 0 .5rem;
 }
 .blogPost ul li::before { /* If we do it the normal way, the bullet is way too big. */
     content:"•";
@@ -116,6 +120,12 @@ footer {
 }
 .blogPost ol {
     list-style: decimal outside none;
+}
+ol.footnotes {
+    list-style: decimal inside none;
+}
+ol.footnotes li {
+    margin: 0;
 }
 
 .postStart {
@@ -247,17 +257,17 @@ a:link:not(.u-plainLink) {
     /* blue with more green 
     color: #009cff; */
     color: #006fff;
-    border-bottom: 2px dotted;
+    border-bottom: .15rem dotted;
 }
 a:hover:not(.u-plainLink),
 a:focus:not(.u-plainLink),
 a:active:not(.u-plainLink) {
     color: #006fff;
-    border-bottom: 2px solid;
+    border-bottom: .15rem solid;
 }
 a:visited:not(.u-plainLink) {
     color: #8a8a8a;
-    border-bottom: 2px dotted;
+    border-bottom: .15rem dotted;
 }
 
 .navLink:link,
@@ -341,6 +351,9 @@ header, footer {
 }
 /* UTILITIES ******************************************************************/
 
+/* Use for linking to something on the same page, instead of an anchor tag. */
+.u-onpageLink {}
+
 .u-left {
     float: left !important;
 }
@@ -353,13 +366,19 @@ header, footer {
 
 /* Something that looks (and probably acts) like a link, but isn't really an <a> */
 .u-pseudoLink {
-    color: #006fff;
-    border-bottom: 2px dotted;
+    color: #006fff !important;
+    border-bottom: .15rem dotted !important;
+    cursor: pointer !important;
 }
 .u-pseudoLink:hover,
 .u-pseudoLink:focus,
 .u-pseudoLink:active {
-    border-bottom: 2px solid;
+    border-bottom: .15rem solid !important;
+    cursor: pointer !important;
+}
+.u-pseudoLinkNoUnderline {
+    color: #006fff !important;
+    cursor: pointer !important;
 }
 
 /* .u-plainLink: a link that looks like normal text */
@@ -384,3 +403,20 @@ header, footer {
 .u-_isInvisible {
     visibility: hidden !important;
 }
+
+.u-_lookAtMe {
+    animation-name: lookAtMe;
+    animation-duration: 1.5s; 
+    animation-timing-function: linear; 
+    animation-iteration-count: 1;
+}
+    @keyframes lookAtMe {
+        0%,100% {
+            background-color: inherit;
+            color: inherit;
+        }
+        10%,80% {
+            background-color: #ff7000;
+            color: white;
+        }
+    }
