@@ -50,6 +50,8 @@
                     recentPostsOl.innerHTML = postsHTML; // Add the posts to the page
                 }
                 asyncGet("/posts/post_list.html", false, loadRecentPosts);
+                
+                runAfterMainLoadsCore(); // Runs code in core.js meant to run after page loads.
             }
         ////////////////////////////////////////////////////////////////////////
         </script>
