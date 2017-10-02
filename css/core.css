@@ -9,6 +9,9 @@ sup, sup a, sup p {
 strong {
     vertical-align: baseline;
 }
+button {
+    cursor: pointer;
+}
 
 /* LAYOUT *********************************************************************/
 html, body {
@@ -49,7 +52,7 @@ html, body {
     margin-top: -.4rem;
     background: url(/img/iconSprite.svg);
     background-size: auto 36px;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
 }
 .iconSprite-github::before {
     background-position: 0 0
@@ -193,7 +196,7 @@ a,
 li,
 i,
 time {
-    line-height: 1.6rem;
+    line-height: 1.8rem;
     font-size: 1.2rem;
 }
 
@@ -329,7 +332,7 @@ header, footer {
     li,
     i,
     time {
-        line-height: 1.6rem;
+        line-height: 1.8rem;
         font-size: 1.1rem;
     }
     code {
@@ -353,6 +356,15 @@ header, footer {
 
 /* Use for linking to something on the same page, instead of an anchor tag. */
 .u-onpageLink {}
+.u-onpageLinkBackButton {
+    position: absolute;
+    top: -4rem;
+    right: 4rem;
+}
+
+.u-positionRelative {
+    position: relative;
+}
 
 .u-left {
     float: left !important;
@@ -387,7 +399,52 @@ header, footer {
 .u-plainLink:hover,
 .u-plainLink:focus,
 .u-plainLink:active {
-    border: none  !important;
+    border: none;
+}
+
+/* Use for external links. Adds an icon to tell the user the URL is on a different site. */
+.u-externalLink {
+    position: relative;
+    margin-right: 1rem;
+}
+.u-externalLink::after {
+    content: "";
+    display: inline-block;
+    background: url(/img/iconSprite.svg);
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+    background-size: auto 10px;
+    background-position: -30px 0;
+    position: absolute;
+    top: 20%;
+    right: -.8rem;
+}
+
+/* Button - simple */
+.u-simpleButton {
+    border-radius: .5rem;
+    border: .2rem solid #006fff;
+    color: #006fff;
+    padding: .3rem;
+    background-color: white;
+}
+
+/* Loading notification */
+.u-loadingNotification {
+    border-radius: .5rem;
+    border: .2rem solid white;
+    background-color: #006fff;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    position: fixed;
+    width: 20rem;
+    height: 6rem;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 40%;
 }
 
 
@@ -416,7 +473,7 @@ header, footer {
             color: inherit;
         }
         10%,80% {
-            background-color: #ff7000;
-            color: white;
+            background-color: #ffee00;
+            color: black;
         }
     }
