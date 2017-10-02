@@ -41,6 +41,6 @@ function hideLoadingNotification(){
 
 // Runs after page is loaded
 function runAfterMainLoadsCore() {
-    hideLoadingNotification();
+    // hideLoadingNotification();
     onpageLinks();
 }

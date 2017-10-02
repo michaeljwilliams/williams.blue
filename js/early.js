@@ -1,7 +1,7 @@
 // early.js - JS that should run before content loads
 ////////////////////////////////////////////////////////////////////////////////
 // Global variables
-var loadingNotification = document.createElement("h1");
+// var loadingNotification = document.createElement("h1");
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -91,11 +91,15 @@ function loadContentIntoElement(url, where, cb) {
 // Loads the page
 function loadPage() {
 
-    (function displayLoadingNotification() {
+    
+    // Displays loading notification. Not really needed while page downloads are so small.
+        // ALSO bugs when user goes back in Firefox on Android. Notification is permanently displayed.
+        // Could not reproduce bug in desktop browser or Chrome on Android.
+    function displayLoadingNotification() {
         loadingNotification.classList = "u-loadingNotification";
         loadingNotification.innerHTML = "Loading...";
         document.body.appendChild(loadingNotification);
-    })();
+    };
 
     // Load template content in order of importance. Leading content first, then the rest.
     loadContentIntoElement("/template/header.html", "header");
