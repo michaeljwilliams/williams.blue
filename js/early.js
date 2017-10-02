@@ -1,5 +1,9 @@
 // early.js - JS that should run before content loads
 ////////////////////////////////////////////////////////////////////////////////
+// Global variables
+var loadingNotification = document.createElement("h1");
+
+////////////////////////////////////////////////////////////////////////////////
 
 // Makes an XMLHttpRequest for a file, then runs a callback.
 // example
@@ -86,6 +90,12 @@ function loadContentIntoElement(url, where, cb) {
 
 // Loads the page
 function loadPage() {
+
+    (function displayLoadingNotification() {
+        loadingNotification.classList = "u-loadingNotification";
+        loadingNotification.innerHTML = "Loading...";
+        document.body.appendChild(loadingNotification);
+    })();
 
     // Load template content in order of importance. Leading content first, then the rest.
     loadContentIntoElement("/template/header.html", "header");
