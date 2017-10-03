@@ -26,6 +26,9 @@ html, body {
     height: 100%;
     width: 100%;
 }
+sup span {
+    padding: .1rem;
+}
 
 .selfie {
     width: 70vw;
