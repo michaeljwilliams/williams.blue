@@ -20,10 +20,13 @@ links.forEach(function(link) {                              // Add event listene
         var backButton = document.createElement("button");  // Create back button
         backButton.classList = "u-simpleButton u-onpageLinkBackButton";
         backButton.innerHTML = "Go back";
-        element.appendChild(backButton);
 
         var distanceToTop = window.scrollY;
-        window.addEventListener("scroll", runOnScroll);
+
+        window.setTimeout(function(){
+            element.appendChild(backButton);                // Back button appears after element highlighted
+            window.addEventListener("scroll", runOnScroll); // Back button gets event listener after scroll
+        }, 1500);
 
         backButton.addEventListener("click", function() {
             scrollIntoViewAndHighlight(previousElement);    // Scroll back to previous element when clicked

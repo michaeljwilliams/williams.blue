@@ -7,16 +7,29 @@
     <meta content="Michael Williams" name="author">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <link href="/img/favicon.png" rel="icon" type="icon">
+    <link href="/css/core.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1 class="noJSWarning">Michael Williams<br>Sorry, this site requires JavaScript to work properly. Please enable JavaScript.</h1>
-    <!-- Removes the no-JS warning if JS is enabled. -->
-    <script>(function(){var foo = document.querySelector(".noJSWarning"); foo.parentNode.removeChild(foo);})();</script>
-     
+<body>     
     <header></header>
 
-    <main></main>
+    <main>  
+        <section class="noJS">
+            <p style="color: #006fff">Please use a web browser with JavaScript enabled to view the full site.</p>
+            <h1>Michael Williams</h1>
+            <h2>About me</h2>
+            <p>
+                Hi! I'm a designer, developer, and user experience activist. I love making the Web a better place by creating elegant, functional designs and user experiences and easy-to-use, fast websites. <a href="mailto:33a1eb@williams.blue">Send me an email!</a>
+                <br><br>
+                In my spare time I like to read, <a href="https://open.spotify.com/user/mwilliaams">listen to music</a>, play guitar, and explore the great outdoors.
+                <br><br>
+                I live in sunny San Diego and know of only two seasons: "Warm" and "Hot".
+                <br><br>
+            </p>
+        </section>
+        <!-- Removes the no-JS content if JS is enabled. -->
+        <script>(function(){var foo = document.querySelector(".noJS"); foo.parentNode.removeChild(foo);})();</script>
+    </main>
 
     <footer></footer>
 
@@ -40,7 +53,6 @@
         <!-- This script loads the page/template. -->
         <script src="/js/early.js"></script>
 
-    <link href="/css/core.css" rel="stylesheet">
     <script src="/js/core.js"></script>
 
 </body>
