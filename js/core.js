@@ -3,9 +3,9 @@
 
 function onpageLinks(highlight) {
 var links = document.querySelectorAll(".u-onpageLink");     // Get array of onpage links
-links.forEach(function(link) {                              // Add event listener to each link
-    link.addEventListener("click", linkWasClicked);         // Run linkWasClicked when clicked
-});
+for(i = 0, l = links.length; i < l; i++) {
+    links[i].addEventListener("click", linkWasClicked);     // Attach event listener to each link
+}
 
     function linkWasClicked() {
         var previousElement = this; // The link that was clicked
@@ -14,14 +14,17 @@ links.forEach(function(link) {                              // Add event listene
 
         element.classList.add("u-positionRelative");        // So we can position the button next to it
         scrollIntoViewAndHighlight(element);
+        var distanceToTop = window.scrollY;                 // Get current distance from top of page
         
+        // Check if back button already exists. Remove if it does.
+        var oldBackButton = document.querySelector(".u-onpageLinkBackButton");
+        if(oldBackButton) removeBackButton(oldBackButton);
+
         // Creates a button that will take the user back to the previous element they were looking at.
         // The button is displayed adjacent to the new element.
         var backButton = document.createElement("button");  // Create back button
-        backButton.classList = "u-simpleButton u-onpageLinkBackButton";
+        backButton.classList.add("u-simpleButton", "u-onpageLinkBackButton");
         backButton.innerHTML = "Go back";
-
-        var distanceToTop = window.scrollY;
 
         window.setTimeout(function(){
             element.appendChild(backButton);                // Back button appears after element highlighted
@@ -30,7 +33,7 @@ links.forEach(function(link) {                              // Add event listene
 
         backButton.addEventListener("click", function() {
             scrollIntoViewAndHighlight(previousElement);    // Scroll back to previous element when clicked
-            removeBackButton();                             // Remove the back button and other stuff we used
+            removeBackButton(backButton);                             // Remove the back button and other stuff we used
         });
 
         function scrollIntoViewAndHighlight(element) {
@@ -52,13 +55,14 @@ links.forEach(function(link) {                              // Add event listene
 
             // If user scrolls past the threshold, remove the back button etc
             if( d > threshold) {
-                removeBackButton();
+                removeBackButton(backButton);
             }
         }
 
-        function removeBackButton() {
-            backButton.parentElement.removeChild(backButton);   // Remove back button
-            element.classList.remove("u-positionRelative");     // and other stuff we used.
+        // Remove back button and other stuff we used.
+        function removeBackButton(button) {
+            button.parentElement.classList.remove("u-positionRelative");
+            button.parentElement.removeChild(button);
             window.removeEventListener("scroll", runOnScroll);
         }
     }
