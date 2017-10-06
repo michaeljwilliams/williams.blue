@@ -10,8 +10,7 @@
     <link href="/css/core.css" rel="stylesheet">
 </head>
 
-<body>
-     
+<body>     
     <header></header>
 
     <main>
@@ -43,28 +42,10 @@
             // The following functions come before early.js because they are called in that script, and so must
             // already be defined.
             function pageSpecificActions() {
-                loadContentIntoElement("/index_.html", "main", runAfterMainLoads);
+                loadContentIntoElement("/me_.html", "main", runAfterMainLoads);
             }
             function runAfterMainLoads() {
-                function loadRecentPosts(postList) {
-                    var parser = new DOMParser(); // Create a parser for the content
-                    postList = parser.parseFromString(postList,"text/xml") // Parse content to create an xml object
-                    var posts = postList.querySelectorAll("li"); // Get the list items
-                    posts = Array.from(posts).slice(0,3); // Convert to array and slice to first 3 posts
-
-                    var postsHTML = ""; // Holds the HTML of the posts
-                    // Must be empty string or it'll say "undefined"
-
-                    // First 3 posts
-                    for(i = 0; i <= 2; i++) {
-                        if(posts[i]) postsHTML += posts[i].outerHTML; // If post exists, add its HTML
-                    }
-                   
-                    var recentPostsOl = document.querySelector(".postList");
-                    recentPostsOl.innerHTML = postsHTML; // Add the posts to the page
-                }
-                asyncGet("/posts/post_list.html", false, loadRecentPosts);
-                
+                insertContent("main", '<img src="/img/selfie.jpg" alt="selfie" class="selfie">');
                 runAfterMainLoadsCore(); // Runs code in core.js meant to run after page loads.
             }
         ////////////////////////////////////////////////////////////////////////
