@@ -1,6 +1,6 @@
 <!-- Content for /me.html and /index.html -->
 <!-- Links should start from /root because the final compiled page is at an arbitrary location. -->
-<section>
+<section class="about-me-section">
     <h2>About me</h2>
     <p>
         Hi! I'm a designer, developer, and user experience activist. I love making the Web a better place by creating elegant, functional designs and user experiences and easy-to-use, fast websites. I also enjoy sharing <a href="/posts/index.html">my ideas</a> and <a href="/portfolio/index.html">my work</a>. <a href="mailto:33a1eb@williams.blue">Send me an email!</a>
@@ -11,3 +11,11 @@
         <br><br>
     </p>
 </section>
+
+<script>
+    var selfie = document.createElement("img");
+    selfie.innerHTML = '<img src="/img/selfie.jpg" alt="selfie" class="selfie">';
+    addContent(".about-me-section", selfie);
+
+    runAfterPageLoad();
+</script>

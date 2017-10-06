@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Michael Williams</title>
-    <meta content="Michael Williams" name="description">
+    <meta content="Michael Williams, designer, developer, and user experience activist" name="description">
     <meta content="Michael Williams" name="author">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <link href="/img/favicon.png" rel="icon" type="icon">
@@ -12,10 +12,17 @@
 
 <body>
      
-    <header></header>
+    <header>
+        <nav>
+            <a href="#/_index.html" class="u-link-plain masthead">Michael Williams</a>
+            <a href="#/_posts.html" class="link-nav">Blog</a>
+            <a href="#/_portfolio.html" class="link-nav">Work</a>
+            <a href="#/_me.html" class="link-nav">Me</a>
+        </nav>
+    </header>
 
-    <main>
-        <section class="noJS">
+    <main><div>
+        <section class="no-js">
             <p style="color: #006fff">Please use a web browser with JavaScript enabled to view the full site.</p>
             <h1>Michael Williams</h1>
             <h2>About me</h2>
@@ -29,49 +36,143 @@
             </p>
         </section>
         <!-- Removes the no-JS content if JS is enabled. -->
-        <script>(function(){var foo = document.querySelector(".noJS"); foo.parentNode.removeChild(foo);})();</script>
-    </main>
-
-    <footer></footer>
-
-    <!-- JS that should run before content loads. -->
-    <!-- This must come after the main structural elements above because these are referenced in the code. -->
-
-        <!-- PAGE-SPECIFIC ACTIONS -->
         <script>
-        ////////////////////////////////////////////////////////////////////////
-            // The following functions come before early.js because they are called in that script, and so must
-            // already be defined.
-            function pageSpecificActions() {
-                loadContentIntoElement("/index_.html", "main", runAfterMainLoads);
-            }
-            function runAfterMainLoads() {
-                function loadRecentPosts(postList) {
-                    var parser = new DOMParser(); // Create a parser for the content
-                    postList = parser.parseFromString(postList,"text/xml") // Parse content to create an xml object
-                    var posts = postList.querySelectorAll("li"); // Get the list items
-                    posts = Array.from(posts).slice(0,3); // Convert to array and slice to first 3 posts
-
-                    var postsHTML = ""; // Holds the HTML of the posts
-                    // Must be empty string or it'll say "undefined"
-
-                    // First 3 posts
-                    for(i = 0; i <= 2; i++) {
-                        if(posts[i]) postsHTML += posts[i].outerHTML; // If post exists, add its HTML
-                    }
-                   
-                    var recentPostsOl = document.querySelector(".postList");
-                    recentPostsOl.innerHTML = postsHTML; // Add the posts to the page
-                }
-                asyncGet("/posts/post_list.html", false, loadRecentPosts);
-                
-                runAfterMainLoadsCore(); // Runs code in core.js meant to run after page loads.
-            }
-        ////////////////////////////////////////////////////////////////////////
+            (function(){var a=document.querySelector(".no-js");if(a){a.parentNode.removeChild(a);}})();
         </script>
+    </div></main>
 
-        <!-- This script loads the page/template. -->
-        <script src="/js/early.js"></script>
+    <footer>
+        <div class="social-links-div">
+            <a href="mailto:33a1eb@williams.blue" class="iconsprite iconsprite-email u-link-plain">Email</a>
+            <a href="https://github.com/michaeljwilliams" class="iconsprite iconsprite-github u-link-plain">Code</a>
+            <a href="https://open.spotify.com/user/mwilliaams" class="iconsprite iconsprite-spotify u-link-plain">I wanna rock!</a>
+        </div>
+        <small>Michael Williams</small>
+    </footer>
+
+    <script>
+    // This script loads the page/template. Code here runs before the page loads, but must come after the main 
+    // structural elements because these are referenced in the code.
+        ////////////////////////////////////////////////////////////////////////////////
+        // Global variables
+        var currentPage = "/index.html";
+        var readingWidth = true;
+
+        ////////////////////////////////////////////////////////////////////////////////
+        // Code that runs once, when page initially loads.
+        loadPage();
+
+        // Listen for clicks on the page
+        document.body.addEventListener("click", somethingWasClicked, false);
+
+        ////////////////////////////////////////////////////////////////////////////////
+
+        function asyncGet(url, cb, errcb) { // Extra args will be passed to cb
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.send(null);
+
+            xhr.timeout = 10000;
+            xhr.ontimeout = function() {
+                console.error("asyncGet: The request for " + url + " failed after 5 seconds.");
+            };
+
+            xhr.onload = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    cb(xhr.response);
+                } else {
+                    console.error(xhr.statusText);      // Log error to console
+                    if(errcb) errcb(url);               // Call errcb if given
+                }
+            };
+        }
+
+        function addContent(where, content) {
+                document.querySelector(where).appendChild(content);
+        }
+
+        // Asynchronously retrieves content, loads into the given location, and calls cb when done.
+        function loadContentIntoElement(url, where, cb) {
+            asyncGet(url, asyncGetCb);
+
+            function asyncGetCb(content) {
+                var parser = new DOMParser();                           // Create a parser for the content
+                content = parser.parseFromString(content,"text/html");   // Parse content to create an xml object
+
+                // Create new script tags and append them to <body> so that they will run. 
+                // Fill them with the code that we received from asyncGet.
+                var scripts = content.body.getElementsByTagName("script");
+                window.setTimeout(function() {                          // Slight delay so that content 
+                    for(var i = 0, l = scripts.length; i < l; i ++) {      // finishes being added to the DOM
+                        var script = document.createElement("script");  // before these scripts try to modify.
+                        if (!scripts[i].src) {
+                            script.innerHTML = scripts[i].innerHTML;
+                        } else {
+                            script.src = scripts[i].src;
+                        }
+                        document.body.appendChild(script);
+                    }
+                }, 1);
+
+                addContent(where, content.body.firstChild);    // Add the content to the page. 
+                // The parsing process created <html> and <body> elements, so content.body bypasses that.
+            }
+            if(cb) cb(url, where);
+        }
+
+        // Does something when something is clicked
+        function somethingWasClicked(event) {   // Runs when something is clicked.
+        var target = event.target;              // The thing that was clicked
+
+            // Link
+            // Check if target is an <a> and has proper href (starts with #/)
+            if(target.nodeName === "A" && target.getAttribute("href").substring(0,2) === "#/") {
+                internalLinkWasClicked(target); 
+            // Check if parent element meets conditions
+            } else if(target.parentNode && target.parentNode.nodeName === "A" && target.parentNode.getAttribute("href").substring(0,2) === "#/") {
+                internalLinkWasClicked(target.parentNode);
+            }
+            function internalLinkWasClicked(link) {
+                event.preventDefault();         // Prevent unwanted default behavior
+                event.stopPropagation();        // We're done with the event now
+                loadPage(link.getAttribute("href").substring(1));
+                // history.pushState(data[title], title, event.target.href);
+            }
+
+            // On-page link
+            if(target.className.indexOf("u-link-onpage") !== -1) onpageLinkHandler.linkWasClicked(target);
+            if(target.className.indexOf("u-backbutton-link-onpage") !== -1) onpageLinkHandler.backButtonWasClicked();
+        }
+
+        // Loads the page
+        function loadPage(whichPage) {
+            // Load the page from the url
+            if(!whichPage) {
+                // If a hash with a slash (#/) is present in the url, attempt to load the content at that path
+                var hash = window.location.hash.substring(1);               // Get hash
+                if(hash.length !== 0 && hash.substring(0,1) === "/") {      // Check for "#/"
+                    whichPage = hash;
+                } else whichPage = "/_index.html";
+            // Load the page from a link
+            } else {
+                window.location = "/index.html#" + whichPage;       // Change URL to new page
+            }
+
+            // Remove old content
+            var oldContent = document.querySelector("main").firstChild;
+            if(oldContent) oldContent.parentElement.removeChild(oldContent);
+
+            currentPage = window.location.pathname + window.location.hash; // Update currentPage
+
+            console.log("Loading " + whichPage);
+            loadContentIntoElement(whichPage, "main"); // Load remote content into main.
+        }
+
+        // Stuff to do after the page loads. This function is called by a script in the loaded content.
+        function runAfterPageLoad(url, where) {
+
+        }
+    </script>
 
     <script src="/js/core.js"></script>
 
