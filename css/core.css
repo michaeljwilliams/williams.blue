@@ -48,12 +48,12 @@ sup span {
     border-color: #006fff;
 }
 
-.iconsprite {
+.iconSprite {
     margin-right: 1rem;
     display: inline-block;
     margin-bottom: 1rem;
 }
-.iconsprite::before {
+.iconSprite::before {
     content: "";
     display: inline-block;
     width: 36px;
@@ -65,28 +65,21 @@ sup span {
     background-size: auto 36px;
     background-repeat: no-repeat;
 }
-.iconsprite-github::before {
+.iconSprite-github::before {
     background-position: 0 0
 }
-.iconsprite-spotify::before {
+.iconSprite-spotify::before {
     background-position: -36px 0;
 }
-.iconsprite-email::before {
+.iconSprite-email::before {
     background-position: -72px 0;
 }
 
 main {
     min-height: calc(100% - 8rem);
-    width: 100%;
-    padding: 1rem;
-}
-main > div:not(.full-width),
-main > section:not(.full-width),
-main > article:not(.full-width) {
-    max-width: 44rem;
-    margin: 0 auto;
 }
 
+main,
 nav {
     max-width: 44rem;
     margin: 0 auto 0 auto;
@@ -101,13 +94,13 @@ header, footer {
 header {
     margin-bottom: 1rem;
 }
-.link-nav, .masthead {
+.navLink, .masthead {
     display: inline-block;
 }
-.masthead {
+.masthead:not(h1) {
     margin-right: 8%;
 }
-.link-nav {
+.navLink {
     padding: 0 .3rem;
     margin-right: 4%;
 }
@@ -118,28 +111,28 @@ footer {
     padding: 1rem;
 }
 
-.paragraph-group {
+.paragraphGroup {
     margin-bottom: 3rem;
 }
-.blog-post p, .blog-post ul, .blog-post ol {
+.blogPost p, .blogPost ul, .blogPost ol {
     padding-bottom: 1.4rem;
 }
-.blog-post ul {
+.blogPost ul {
     position: relative;
 }
-.blog-post ul li {
+.blogPost ul li {
     padding: 0 1rem;
 }
-.blog-post ol li {
+.blogPost ol li {
     margin: 0 1.2rem;
     padding: 0 .5rem;
 }
-.blog-post ul li::before { /* If we do it the normal way, the bullet is way too big. */
+.blogPost ul li::before { /* If we do it the normal way, the bullet is way too big. */
     content:"•";
     position: absolute;
     left: 0;
 }
-.blog-post ol {
+.blogPost ol {
     list-style: decimal outside none;
 }
 ol.footnotes {
@@ -149,31 +142,31 @@ ol.footnotes li {
     margin: 0;
 }
 
-.post-start {
+.postStart {
     text-align: center;
     margin-bottom: 2rem;
 }
-.post-list h1 {
+.postList h1 {
     font-size: 2.4rem;
     font-weight: 400;
     line-height: 3.6rem;
     display: block;
     margin-bottom: .5rem;
 }
-.post-list a {
+.postList a {
     color: #006fff;
     border-bottom: 1px dotted;
     line-height: 1.6rem;
     font-size: 1.2rem;
 }
-.post-list li {
+.postList li {
     margin-bottom: 4rem;
 }
-.post-list p {
+.postList p {
     margin-bottom: 1rem;
     display: block;
 }
-.post-list time {
+.postList time {
     display: block;
     margin-bottom: 1rem;
 }
@@ -182,23 +175,12 @@ main section {
     margin-bottom: 4rem;
 }
 
-.about-me-section p {
+.aboutMeSection p {
     margin-bottom: 0;
 }
 
-.social-links-div {
+.socialLinksDiv {
     display: block;
-}
-
-.portfolio-section {
-    width: 100%;
-    text-align: center;
-}
-.square-container {
-    min-width: 14rem;
-    min-height: 14rem;
-    margin: 1rem;
-    display: inline-block;
 }
 
 /* FONTS **********************************************************************/
@@ -276,47 +258,54 @@ h3 {
     font-size: 1.4rem;
 }
 
-.nav-link {
+.navLink {
     line-height: 2rem;
 }
 .masthead {
-    font-size: 2.4rem;
     line-height: 2rem;
 }
 
 /* LINKS **********************************************************************/
 
-a:link:not(.u-link-plain) {
+a:link:not(.u-plainLink) {
     /* blue with more green 
     color: #009cff; */
     color: #006fff;
     border-bottom: .15rem dotted;
 }
-a:hover:not(.u-link-plain),
-a:focus:not(.u-link-plain),
-a:active:not(.u-link-plain) {
+a:hover:not(.u-plainLink),
+a:focus:not(.u-plainLink),
+a:active:not(.u-plainLink) {
     color: #006fff;
     border-bottom: .15rem solid;
 }
-a:visited:not(.u-link-plain) {
+a:visited:not(.u-plainLink) {
     color: #8a8a8a;
     border-bottom: .15rem dotted;
 }
 
-.link-nav:link,
-.link-nav:hover,
-.link-nav:focus,
-.link-nav:active,
-.link-nav:visited {
+.navLink:link,
+.navLink:hover,
+.navLink:focus,
+.navlink:active,
+.navLink:visited {
     color: white !important;
 }
 
 /* COLOR **********************************************************************/
+body {
+    /*
+    background-color: #0770EA;
+    background: linear-gradient(180deg, #078fea, #001a3a);
+    */
+}
+
+main {
+    background-color: white;
+}
+
 html {
     color: black;
-}
-body {
-    background-color: white;
 }
 
 code {
@@ -329,8 +318,8 @@ header, footer {
     color: white;
 }
 
-.post-list time,
-.post-start time {
+.postList time,
+.postStart time {
     color: #888888;
 }
 
@@ -365,7 +354,7 @@ header, footer {
         display: block;
         padding-right: 0;
     }
-    .link-nav {
+    .navLink {
         line-height: 1.6rem;
     }
 
@@ -377,14 +366,14 @@ header, footer {
 /* UTILITIES ******************************************************************/
 
 /* Use for linking to something on the same page, instead of an anchor tag. */
-.u-link-onpage {}
-.u-backbutton-link-onpage {
+.u-onpageLink {}
+.u-onpageLinkBackButton {
     position: absolute;
     top: -4rem;
     right: 4rem;
 }
 
-.u-position-relative {
+.u-positionRelative {
     position: relative;
 }
 
@@ -399,37 +388,37 @@ header, footer {
 }
 
 /* Something that looks (and probably acts) like a link, but isn't really an <a> */
-.u-link-pseudo {
+.u-pseudoLink {
     color: #006fff !important;
     border-bottom: .15rem dotted !important;
     cursor: pointer !important;
 }
-.u-link-pseudo:hover,
-.u-link-pseudo:focus,
-.u-link-pseudo:active {
+.u-pseudoLink:hover,
+.u-pseudoLink:focus,
+.u-pseudoLink:active {
     border-bottom: .15rem solid !important;
     cursor: pointer !important;
 }
-.u-link-pseudo-no-underline {
+.u-pseudoLinkNoUnderline {
     color: #006fff !important;
     cursor: pointer !important;
 }
 
 /* .u-plainLink: a link that looks like normal text */
-.u-link-plain,
-.u-link-plain:visited,
-.u-link-plain:hover,
-.u-link-plain:focus,
-.u-link-plain:active {
+.u-plainLink,
+.u-plainLink:visited,
+.u-plainLink:hover,
+.u-plainLink:focus,
+.u-plainLink:active {
     border: none;
 }
 
 /* Use for external links. Adds an icon to tell the user the URL is on a different site. */
-.u-link-external {
+.u-externalLink {
     position: relative;
     margin-right: 1rem;
 }
-.u-link-external::after {
+.u-externalLink::after {
     content: "";
     display: inline-block;
     background: url(/img/iconSprite.svg);
@@ -444,7 +433,7 @@ header, footer {
 }
 
 /* Button - simple */
-.u-button-simple {
+.u-simpleButton {
     border-radius: .5rem;
     border: .2rem solid #006fff;
     color: #006fff;
@@ -453,7 +442,7 @@ header, footer {
 }
 
 /* Loading notification */
-.u-notification-loading {
+.u-loadingNotification {
     border-radius: .5rem;
     border: .2rem solid white;
     background-color: #006fff;
@@ -474,22 +463,22 @@ header, footer {
 /* State utility classes - these are meant to be added or removed to turn them on and off */
 
 /* Use to hide things and remove them from document flow */
-.u-_is-absent {
+.u-_isAbsent {
     display: none !important;
 }
 
 /* Use to hide things */
-.u-_is-invisible {
+.u-_isInvisible {
     visibility: hidden !important;
 }
 
-.u-_lookatme {
-    animation-name: lookatme;
+.u-_lookAtMe {
+    animation-name: lookAtMe;
     animation-duration: 1.5s; 
     animation-timing-function: linear; 
     animation-iteration-count: 1;
 }
-    @keyframes lookatme {
+    @keyframes lookAtMe {
         0%,100% {
             background-color: inherit;
             color: inherit;
