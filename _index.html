@@ -18,7 +18,7 @@
 
 <script>
     asyncGet("/_posts.html", loadRecentPosts);
-    pageTitle = "Michael Williams";
+    currentPage.title = "Michael Williams";
 
     function loadRecentPosts(postList) {
         var parser = new DOMParser();                           // Create a parser for the content
