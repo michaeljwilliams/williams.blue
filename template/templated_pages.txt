@@ -1,5 +1,0 @@
-/index.html
-/me.html
-/posts/index.html
-/posts/read.html
-/portfolio/index.html
