@@ -16,7 +16,7 @@
         <nav>
             <a href="#/_index.html" class="u-link-plain masthead">Michael Williams</a>
             <a href="#/_posts.html" class="link-nav">Blog</a>
-            <a href="#/_portfolio.html" class="link-nav">Work</a>
+            <a href="#/_work.html" class="link-nav">Work</a>
             <a href="#/_me.html" class="link-nav">Me</a>
         </nav>
     </header>
@@ -55,11 +55,22 @@
     // structural elements because these are referenced in the code.
         ////////////////////////////////////////////////////////////////////////////////
         // Global variables
-        var currentPage = "/index.html";
-        var readingWidth = true;
+        var currentPage = {
+            url: "/_index.html"
+            ,title: "Michael Williams"
+        };
 
         ////////////////////////////////////////////////////////////////////////////////
         // Code that runs once, when page initially loads.
+
+        /*
+        window.onpopstate = function(event) {
+            if(event.state !== currentPage) {
+                console.log(event.state.url);
+                loadPage(event.state.url);
+            }
+        }
+        */
         loadPage();
 
         // Listen for clicks on the page
@@ -102,17 +113,24 @@
                 // Create new script tags and append them to <body> so that they will run. 
                 // Fill them with the code that we received from asyncGet.
                 var scripts = content.body.getElementsByTagName("script");
-                window.setTimeout(function() {                          // Slight delay so that content 
-                    for(var i = 0, l = scripts.length; i < l; i ++) {      // finishes being added to the DOM
-                        var script = document.createElement("script");  // before these scripts try to modify.
-                        if (!scripts[i].src) {
-                            script.innerHTML = scripts[i].innerHTML;
-                        } else {
-                            script.src = scripts[i].src;
+
+                // Slight delay so that new content finishes being added to the DOM before the scripts below 
+                // (1) try to modify the new content.
+                window.setTimeout(function() {      
+                    if(scripts.length === 0) {  // If no scripts are loaded, run this now.
+                        runAfterPageLoad();     // Otherwise it is called by a script that we loaded.
+                    } else {
+                        for(var i = 0, l = scripts.length; i < l; i ++) {   // (1) these scripts
+                            var script = document.createElement("script");
+                            if (!scripts[i].src) {
+                                script.innerHTML = scripts[i].innerHTML;
+                            } else {
+                                script.src = scripts[i].src;
+                            }
+                            document.body.appendChild(script);
                         }
-                        document.body.appendChild(script);
                     }
-                }, 1);
+                }, 10);
 
                 addContent(where, content.body.firstChild);    // Add the content to the page. 
                 // The parsing process created <html> and <body> elements, so content.body bypasses that.
@@ -135,8 +153,8 @@
             function internalLinkWasClicked(link) {
                 event.preventDefault();         // Prevent unwanted default behavior
                 event.stopPropagation();        // We're done with the event now
+                history.pushState(currentPage, currentPage.title, currentPage.url);
                 loadPage(link.getAttribute("href").substring(1));
-                // history.pushState(data[title], title, event.target.href);
             }
 
             // On-page link
@@ -162,19 +180,23 @@
             var oldContent = document.querySelector("main").firstChild;
             if(oldContent) oldContent.parentElement.removeChild(oldContent);
 
-            currentPage = window.location.pathname + window.location.hash; // Update currentPage
+            // Update currentPage.url
+            currentPage.url = whichPage;
+            console.log(currentPage.url);
 
-            console.log("Loading " + whichPage);
             loadContentIntoElement(whichPage, "main"); // Load remote content into main.
         }
 
-        // Stuff to do after the page loads. This function is called by a script in the loaded content.
+        // Stuff to do after the page loads. This function is called by a script in the loaded content, or
+        // after the new content has been parsed, if no scripts are present.
+        // Consider how important things are before putting them here instead of /js/core.js.
         function runAfterPageLoad(url, where) {
+            // Update page title
+            document.querySelector("title").innerHTML = currentPage.title;
 
         }
+
     </script>
-
     <script src="/js/core.js"></script>
-
 </body>
 </html>
