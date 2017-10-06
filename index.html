@@ -58,19 +58,21 @@
         var currentPage = {
             url: "/_index.html"
             ,title: "Michael Williams"
+            ,historical: false
         };
 
         ////////////////////////////////////////////////////////////////////////////////
         // Code that runs once, when page initially loads.
 
-        /*
         window.onpopstate = function(event) {
             if(event.state !== currentPage) {
-                console.log(event.state.url);
+                currentPage = event.state;
+                currentPage.historical = true;
                 loadPage(event.state.url);
             }
-        }
-        */
+        };
+
+        // This will only run once, when the page is first loaded (or refreshed).
         loadPage();
 
         // Listen for clicks on the page
@@ -153,7 +155,6 @@
             function internalLinkWasClicked(link) {
                 event.preventDefault();         // Prevent unwanted default behavior
                 event.stopPropagation();        // We're done with the event now
-                history.pushState(currentPage, currentPage.title, currentPage.url);
                 loadPage(link.getAttribute("href").substring(1));
             }
 
@@ -164,6 +165,7 @@
 
         // Loads the page
         function loadPage(whichPage) {
+            //debugger;
             // Load the page from the url
             if(!whichPage) {
                 // If a hash with a slash (#/) is present in the url, attempt to load the content at that path
@@ -171,26 +173,34 @@
                 if(hash.length !== 0 && hash.substring(0,1) === "/") {      // Check for "#/"
                     whichPage = hash;
                 } else whichPage = "/_index.html";
-            // Load the page from a link
+            // Load the page from the given value of whichPage
             } else {
-                window.location = "/index.html#" + whichPage;       // Change URL to new page
             }
 
             // Remove old content
             var oldContent = document.querySelector("main").firstChild;
             if(oldContent) oldContent.parentElement.removeChild(oldContent);
 
-            // Update currentPage.url
-            currentPage.url = whichPage;
+            // Update currentPage.url, unless we're moving through browser history.
+            if(currentPage.historical === false) {
+                currentPage.url = whichPage;
+            }
             console.log(currentPage.url);
 
-            loadContentIntoElement(whichPage, "main"); // Load remote content into main.
+            loadContentIntoElement(whichPage, "main");          // Load remote content into main.
         }
 
         // Stuff to do after the page loads. This function is called by a script in the loaded content, or
         // after the new content has been parsed, if no scripts are present.
         // Consider how important things are before putting them here instead of /js/core.js.
         function runAfterPageLoad(url, where) {
+
+            // Add history entry and change URL to reflect the new page - unless we're already moving through 
+            // the browser history, in which case these values are already set
+            if(currentPage.historical === false) {
+                history.pushState(currentPage, currentPage.title, "/index.html#" + currentPage.url);
+            }
+
             // Update page title
             document.querySelector("title").innerHTML = currentPage.title;
 
