@@ -1,82 +1,97 @@
 // core.js - JS that can run after content is loaded
 ////////////////////////////////////////////////////////////////////////////////
 
-function onpageLinks(highlight) {
-var links = document.querySelectorAll(".u-onpageLink");     // Get array of onpage links
-for(i = 0, l = links.length; i < l; i++) {
-    links[i].addEventListener("click", linkWasClicked);     // Attach event listener to each link
-}
+var onpageLinkHandler = {
 
-    function linkWasClicked() {
-        var previousElement = this; // The link that was clicked
-        var element = document.querySelector(this.getAttribute("data-onpageLink")); // Destination element
+    link: {}
+    ,element: {}
+    ,backButton: {
+        distanceToTop: 0
+    }
+
+    ,linkWasClicked: function(link) {
+        // The link that was clicked. Make it accessible by other functions.
+        this.link = link;
+
+        // The destination element
         // Get the destination element via the data of the clicked element.
+        var element = document.querySelector(link.getAttribute("data-link-onpage"));
+        this.element = element; // Make it accessible by other functions.
 
-        element.classList.add("u-positionRelative");        // So we can position the button next to it
-        scrollIntoViewAndHighlight(element);
-        var distanceToTop = window.scrollY;                 // Get current distance from top of page
+        element.classList.add("u-position-relative");  // So we can position the button next to it
+
+        this.scrollIntoViewAndHighlight(element);
         
         // Check if back button already exists. Remove if it does.
-        var oldBackButton = document.querySelector(".u-onpageLinkBackButton");
-        if(oldBackButton) removeBackButton(oldBackButton);
+        var oldBackButton = document.querySelector(".u-backbutton-link-onpage");
+        if(oldBackButton) this.removeBackButton(oldBackButton);
 
         // Creates a button that will take the user back to the previous element they were looking at.
         // The button is displayed adjacent to the new element.
-        var backButton = document.createElement("button");  // Create back button
-        backButton.classList.add("u-simpleButton", "u-onpageLinkBackButton");
+        this.backButton = document.createElement("button");     // Create back button
+        var backButton = this.backButton;                       // Less typing
+        backButton.distanceToTop = window.scrollY;              // Get current distance from top of page
+        backButton.classList.add("u-button-simple", "u-backbutton-link-onpage");
         backButton.innerHTML = "Go back";
 
+        // Back button appears after highlight disappears (1.5s). Scroll event listener is attached
         window.setTimeout(function(){
-            element.appendChild(backButton);                // Back button appears after element highlighted
-            window.addEventListener("scroll", runOnScroll); // Back button gets event listener after scroll
+            element.appendChild(backButton);  // Back button appears after element highlighted
+
+            // Back button will fade away on scroll. Event listener is attached after highlight disappears.
+            // Function needs to know where on the page we started and what button we're looking at.
+            window.addEventListener("scroll", onpageLinkHandler.runOnScroll);
         }, 1500);
+    }
 
-        backButton.addEventListener("click", function() {
-            scrollIntoViewAndHighlight(previousElement);    // Scroll back to previous element when clicked
-            removeBackButton(backButton);                             // Remove the back button and other stuff we used
-        });
+    ,backButtonWasClicked: function() {
+        this.scrollIntoViewAndHighlight(this.link);     // Scroll back to previous element when clicked
+        this.removeBackButton(this.backButton);         // Remove the back button and scroll listener
+    }
 
-        function scrollIntoViewAndHighlight(element) {
-            element.scrollIntoView();                       // Scroll element into view
-            element.classList.add("u-_lookAtMe");           // Make element noticeable
+    ,scrollIntoViewAndHighlight: function(element) {
+        element.scrollIntoView();                       // Scroll element into view
+        element.classList.add("u-_lookatme");           // Make element noticeable
 
-            window.setTimeout(function() {                  // Remove noticeable class after 1.5s
-                element.classList.remove("u-_lookAtMe");
-            }, 1500);
-        }
+        window.setTimeout(function() {                  // Remove noticeable class after 1.5s
+            element.classList.remove("u-_lookatme");
+        }, 1500);
+    }
 
-        function runOnScroll() {
-            var d = window.scrollY - distanceToTop;         // Get distance scrolled (delta distanceToTop)
-            d = Math.abs(d);                                // Make sure it's positive
-            var threshold = 300;                            // Threshold to remove the back button (in px)
+    ,runOnScroll: function() {
+        var backButton = onpageLinkHandler.backButton; // Less typing
 
-            // Back button disappears as user scrolls away. It's completely gone when threshold is reached.
-            backButton.style.opacity = (threshold - d) / threshold;
+        // Get distance scrolled away from back button
+        var d = window.scrollY - backButton.distanceToTop;
 
-            // If user scrolls past the threshold, remove the back button etc
-            if( d > threshold) {
-                removeBackButton(backButton);
-            }
-        }
+        d = Math.abs(d);                                // Make sure value is positive (distance)
+        var threshold = 300;                            // Threshold to remove the button (in px)
 
-        // Remove back button and other stuff we used.
-        function removeBackButton(button) {
-            button.parentElement.classList.remove("u-positionRelative");
-            button.parentElement.removeChild(button);
-            window.removeEventListener("scroll", runOnScroll);
+        // Back button disappears as user scrolls away. It's completely gone when threshold is reached.
+        backButton.style.opacity = (threshold - d) / threshold;
+
+        // If user scrolls past the threshold, remove the back button etc
+        if( d > threshold) {
+            onpageLinkHandler.removeBackButton();
         }
     }
-}
+
+    // Remove back button and other stuff we used.
+    ,removeBackButton: function() {
+        this.backButton.parentElement.classList.remove("u-position-relative");
+        this.backButton.parentElement.removeChild(this.backButton);
+        window.removeEventListener("scroll", onpageLinkHandler.runOnScroll);
+    }
+};
 
 function hideLoadingNotification(){
-    loadingNotification.classList += " u-_isAbsent";
+    loadingNotification.classList += " u-_is-absent";
 };
 
 ////////////////////////////////////////////////////////////////////////////////
 // code that runs
 
 // Runs after page is loaded
-function runAfterMainLoadsCore() {
+function runAfterPageLoadsCore() {
     // hideLoadingNotification();
-    onpageLinks();
 }
