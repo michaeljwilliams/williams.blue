@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="5985px" height="3839px" viewBox="0 0 5985 3839" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>export</title>
+<svg width="5985px" height="3839px" viewBox="0 0 5985 3839" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>apex think</title>
+    <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="export" sketch:type="MSLayerGroup">
+        <g id="apex-think" sketch:type="MSLayerGroup">
             <g id="1" sketch:type="MSShapeGroup">
                 <polygon id="Triangle-2" fill="#CDD3DA" points="200 689 400 1077 0 1077 "></polygon>
                 <polygon id="Triangle-3" fill="#CDD3DA" points="754 689 954 1077 554 1077 "></polygon>
