@@ -94,7 +94,7 @@
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     cb(xhr.response);
                 } else { // Log error to console
-                    console.error("asyncGet: The request for " + url + "failed with error: " + xhr.statusText);
+                    console.error("asyncGet: The request for " + url + " failed with error: " + xhr.statusText);
                     if(errcb) errcb(url);               // Call errcb if given
                 }
             };
