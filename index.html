@@ -14,7 +14,7 @@
      
     <header>
         <nav>
-            <a href="#/_index.html" class="u-link-plain masthead">Michael Williams</a>
+            <a href="#/_home.html" class="u-link-plain masthead">Michael Williams</a>
             <a href="#/_posts.html" class="link-nav">Blog</a>
             <a href="#/_work.html" class="link-nav">Work</a>
             <a href="#/_me.html" class="link-nav">Me</a>
@@ -56,7 +56,7 @@
         ////////////////////////////////////////////////////////////////////////////////
         // Global variables
         var currentPage = {
-            url: "/_index.html"
+            url: "/_home.html"
             ,title: "Michael Williams"
             ,historical: false
         };
@@ -172,7 +172,7 @@
                 var hash = window.location.hash.substring(1);               // Get hash
                 if(hash.length !== 0 && hash.substring(0,1) === "/") {      // Check for "#/"
                     whichPage = hash;
-                } else whichPage = "/_index.html";
+                } else whichPage = "/_home.html";
             // Load the page from the given value of whichPage
             } else {
             }
