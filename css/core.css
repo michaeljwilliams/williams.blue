@@ -80,9 +80,11 @@ main {
     width: 100%;
     padding: 1rem;
 }
-main > div:not(.full-width),
+
 main > section:not(.full-width),
-main > article:not(.full-width) {
+main > article:not(.full-width),
+main > div > section:not(.full-width),
+main > div > article:not(.full-width) {
     max-width: 44rem;
     margin: 0 auto;
 }
