@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Michael Williams</title>
-    <meta content="Michael Williams, designer, developer, and user experience activist" name="description">
+    <meta content="Michael Williams: designer, developer, and user experience activist" name="description">
     <meta content="Michael Williams" name="author">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <link href="/img/favicon.png" rel="icon" type="icon">
@@ -218,6 +218,15 @@
 
             // Update page title
             document.querySelector("title").innerHTML = currentPage.title;
+            // Make current nav link have a solid underline (and reset ones that were previously clicked)
+            (function() {
+                var a = document.querySelectorAll(".link-nav");
+                for(var i = 0, l = a.length; i < l; i ++) {
+                    a[i].style.borderBottomStyle = "dotted";
+                }
+                var b = '.link-nav[href*="' + currentPage.url + '"]';
+                if(b) document.querySelector(b).style.borderBottomStyle = "solid";
+            })();
 
         }
 
