@@ -24,7 +24,6 @@
     <main><div>
         <section class="no-js">
             <p style="color: #006fff">Please use a web browser with JavaScript enabled to view the full site.</p>
-            <h1>Michael Williams</h1>
             <h2>About me</h2>
             <p>
                 Hi! I'm a designer, developer, and user experience activist. I love making the Web a better place by creating elegant, functional designs and user experiences and easy-to-use, fast websites. <a href="mailto:33a1eb@williams.blue">Send me an email!</a>
@@ -136,6 +135,7 @@
 
                 addContent(where, content.body.firstChild);    // Add the content to the page. 
                 // The parsing process created <html> and <body> elements, so content.body bypasses that.
+                // *** Beware that whitespace can make this fail (whitespace becomes first child). ***
             }
             if(cb) cb(url, where);
         }
@@ -144,7 +144,7 @@
         function somethingWasClicked(event) {   // Runs when something is clicked.
         var target = event.target;              // The thing that was clicked
 
-            // Link
+            // Link ////////////////////////////////////////////////////////////
             // Check if target is an <a> and has proper href (starts with #/)
             if(target.nodeName === "A" && target.getAttribute("href").substring(0,2) === "#/") {
                 internalLinkWasClicked(target); 
@@ -158,9 +158,24 @@
                 loadPage(link.getAttribute("href").substring(1));
             }
 
-            // On-page link
+            // On-page link ////////////////////////////////////////////////////
             if(target.className.indexOf("u-link-onpage") !== -1) onpageLinkHandler.linkWasClicked(target);
             if(target.className.indexOf("u-backbutton-link-onpage") !== -1) onpageLinkHandler.backButtonWasClicked();
+
+            // Portfolio ///////////////////////////////////////////////////////
+            if(currentPage.url === "/_work.html") {
+                if(target.className.indexOf("portfolio-image") !== -1 ) {
+                    portfolioHandler.imageWasClicked(target);
+                }
+                if(target.className.indexOf("portfolio-caption") !== -1 ) {
+                    portfolioHandler.clickedAgain(target);
+                }
+                if(target.parentElement.className.indexOf("portfolio-caption") !== -1 ) {
+                    portfolioHandler.clickedAgainP(target);
+                }
+            }
+
+
         }
 
         // Loads the page
