@@ -92,7 +92,7 @@ main > div > article:not(.full-width) {
 nav {
     max-width: 44rem;
     margin: 0 auto 0 auto;
-    padding: 1.3rem 1rem 1rem 1rem;
+    padding: 1.3rem .5rem 1rem .5rem;
 }
 
 header, footer {
