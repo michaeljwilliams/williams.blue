@@ -225,7 +225,7 @@
                     a[i].style.borderBottomStyle = "dotted";
                 }
                 var b = '.link-nav[href*="' + currentPage.url + '"]';
-                if(b) document.querySelector(b).style.borderBottomStyle = "solid";
+                if(b && currentPage.url !== "/_home.html") document.querySelector(b).style.borderBottomStyle = "solid";
             })();
 
         }
