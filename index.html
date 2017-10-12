@@ -60,51 +60,6 @@
             ,historical: false
         };
 
-        // Handles all the clicks on the page. Decides which function to call when something is clicked.
-        var clickHandler = {
-            event: {}
-            ,target: {}
-            ,exe: function(e) {                     // e(vent)
-                clickHandler.event = e;             // Set event
-                clickHandler.target = e.target;     // Set target
-                clickHandler.decider();
-            }
-            // Chooses which function to call, based on what was clicked etc.
-            ,decider: function() {
-                // Internal link: Check if target is an <a> and has proper href (starts with #/)
-                if(this.target.nodeName === "A" && this.target.getAttribute("href").substring(0,2) === "#/") {
-                    this.internalLinkWasClicked(this.target); 
-                }
-
-                // On-page link
-                if(this.target.className.indexOf("u-link-onpage") !== -1) onpageLinkHandler.linkWasClicked(this.target);
-                if(this.target.className.indexOf("u-backbutton-link-onpage") !== -1) onpageLinkHandler.backButtonWasClicked();
-
-                // Portfolio
-                if(currentPage.url === "/_work.html") {
-                    // Portfolio image is clicked
-                    if(this.target.className.indexOf("portfolio-image") !== -1 ) {
-                        portfolioHandler.imageWasClicked(this.target);
-                    }
-                    // Caption text is clicked
-                    if(this.target.className.indexOf("portfolio-caption") !== -1 ) {
-                        portfolioHandler.clickedAgain(this.target);
-                    }
-                    // Caption box *containing* the text is clicked (the Parent element)
-                    if(this.target.parentElement.className.indexOf("portfolio-caption") !== -1 ) {
-                        portfolioHandler.clickedAgainP(this.target);
-                    }
-                }
-
-            } // end decider
-
-            ,internalLinkWasClicked: function(target) {
-                this.event.preventDefault();         // Prevent unwanted default behavior
-                this.event.stopPropagation();        // We're done with the event now
-                loadPage(this.target.getAttribute("href").substring(1));
-            }
-        };
-
         ////////////////////////////////////////////////////////////////////////////////
         // Code that runs once, when page initially loads.
 
