@@ -60,6 +60,51 @@
             ,historical: false
         };
 
+        // Handles all the clicks on the page. Decides which function to call when something is clicked.
+        var clickHandler = {
+            event: {}
+            ,target: {}
+            ,exe: function(e) {                     // e(vent)
+                clickHandler.event = e;             // Set event
+                clickHandler.target = e.target;     // Set target
+                clickHandler.decider();
+            }
+            // Chooses which function to call, based on what was clicked etc.
+            ,decider: function() {
+                // Internal link: Check if target is an <a> and has proper href (starts with #/)
+                if(this.target.nodeName === "A" && this.target.getAttribute("href").substring(0,2) === "#/") {
+                    this.internalLinkWasClicked(this.target); 
+                }
+
+                // On-page link
+                if(this.target.className.indexOf("u-link-onpage") !== -1) onpageLinkHandler.linkWasClicked(this.target);
+                if(this.target.className.indexOf("u-backbutton-link-onpage") !== -1) onpageLinkHandler.backButtonWasClicked();
+
+                // Portfolio
+                if(currentPage.url === "/_work.html") {
+                    // Portfolio image is clicked
+                    if(this.target.className.indexOf("portfolio-image") !== -1 ) {
+                        portfolioHandler.imageWasClicked(this.target);
+                    }
+                    // Caption text is clicked
+                    if(this.target.className.indexOf("portfolio-caption") !== -1 ) {
+                        portfolioHandler.clickedAgain(this.target);
+                    }
+                    // Caption box *containing* the text is clicked (the Parent element)
+                    if(this.target.parentElement.className.indexOf("portfolio-caption") !== -1 ) {
+                        portfolioHandler.clickedAgainP(this.target);
+                    }
+                }
+
+            } // end decider
+
+            ,internalLinkWasClicked: function(target) {
+                this.event.preventDefault();         // Prevent unwanted default behavior
+                this.event.stopPropagation();        // We're done with the event now
+                loadPage(this.target.getAttribute("href").substring(1));
+            }
+        };
+
         ////////////////////////////////////////////////////////////////////////////////
         // Code that runs once, when page initially loads.
 
@@ -74,10 +119,8 @@
         // This will only run once, when the page is first loaded (or refreshed).
         loadPage();
 
-        // Listen for clicks on the page
-        document.body.addEventListener("click", somethingWasClicked, false);
-
         ////////////////////////////////////////////////////////////////////////////////
+        // Functions
 
         function asyncGet(url, cb, errcb) { // Extra args will be passed to cb
             var xhr = new XMLHttpRequest();
@@ -140,63 +183,6 @@
             if(cb) cb(url, where);
         }
 
-        // Handles all the clicks on the page. Decides which function to call when something is clicked.
-        var clickHandler = {
-            event: {}
-            ,target: {}
-            ,exe: function(event) {
-                this.event = event;             // Set event
-                this.target = event.target;     // Set target
-                this.decider();
-            }
-
-            ,decider: function() {
-
-            }
-
-        };
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-        // Does something when something is clicked
-        function somethingWasClicked(event) {   // Runs when something is clicked.
-        var target = event.target;              // The thing that was clicked
-
-            // Link ////////////////////////////////////////////////////////////
-            // Check if target is an <a> and has proper href (starts with #/)
-            if(target.nodeName === "A" && target.getAttribute("href").substring(0,2) === "#/") {
-                internalLinkWasClicked(target); 
-            }
-            function internalLinkWasClicked(link) {
-                event.preventDefault();         // Prevent unwanted default behavior
-                event.stopPropagation();        // We're done with the event now
-                loadPage(link.getAttribute("href").substring(1));
-            }
-
-            // On-page link ////////////////////////////////////////////////////
-            if(target.className.indexOf("u-link-onpage") !== -1) onpageLinkHandler.linkWasClicked(target);
-            if(target.className.indexOf("u-backbutton-link-onpage") !== -1) onpageLinkHandler.backButtonWasClicked();
-
-            // Portfolio ///////////////////////////////////////////////////////
-            if(currentPage.url === "/_work.html") {
-                if(target.className.indexOf("portfolio-image") !== -1 ) {
-                    portfolioHandler.imageWasClicked(target);
-                }
-                if(target.className.indexOf("portfolio-caption") !== -1 ) {
-                    portfolioHandler.clickedAgain(target);
-                }
-                if(target.parentElement.className.indexOf("portfolio-caption") !== -1 ) {
-                    portfolioHandler.clickedAgainP(target);
-                }
-            }
-
-
-        }
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
         // Loads the page
         function loadPage(whichPage) {
             //debugger;
@@ -230,13 +216,14 @@
         function runAfterPageLoad(url, where) {
 
             // Add history entry and change URL to reflect the new page - unless we're already moving through 
-            // the browser history, in which case these values are already set
+            // the browser history, in which case these values are already set.
             if(currentPage.historical === false) {
                 history.pushState(currentPage, currentPage.title, "/index.html#" + currentPage.url);
             }
 
             // Update page title
             document.querySelector("title").innerHTML = currentPage.title;
+
             // Make current nav link have a solid underline (and reset ones that were previously clicked)
             (function() {
                 var a = document.querySelectorAll(".link-nav");         // Get the nav links.
@@ -249,6 +236,9 @@
                     document.querySelector('.link-nav[href*="' + b + '"]').style.borderBottomStyle = "solid";
                 }
             })();
+
+            // Listen for clicks on the page
+            document.body.addEventListener("click", clickHandler.exe, false);
 
         }
 
