@@ -1,5 +1,5 @@
 /* INIT ***********************************************************************/
-pre,textarea{overflow:auto}html,table{border-collapse:collapse}audio:not([controls]),template{display:none}details,main,summary{display:block}input[type=number]{width:auto}input[type=search]{-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}progress{display:inline-block}small{font-size:75%}[unselectable]{user-select:none}*,::after,::before{box-sizing:inherit;text-decoration:inherit;vertical-align:inherit;border-style:solid;border-width:0}*{color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;line-height:inherit;border-collapse:inherit}*,:after,:before,body,html{margin:0;padding:0;outline:0;border:none}:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;text-size-adjust:100%;box-sizing:border-box;cursor:default;font-family:sans-serif;line-height:1.5em;text-rendering:optimizeLegibility;vertical-align:top}a{text-decoration:none;border-bottom:dotted;}button,input,select,textarea{background:0 0}code,kbd,pre,samp{font-family:monospace,monospace}input{min-height:1.5em}nav ol,nav ul, ol, ul{list-style:none}select{-moz-appearance:none;-webkit-appearance:none}select::-ms-expand{display:none}select::-ms-value{color:currentColor}textarea{resize:vertical}::selection{color:#fff;background-color:#444;text-shadow:none}@media screen{[hidden~=screen]{display:inherit}[hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0;border:none}button{overflow:visible}table{border-spacing:0}:not(body){background-repeat:no-repeat;background-position:50%;background-size:cover}[hidden]{display:none!important}
+pre,textarea{overflow:auto}html,table{border-collapse:collapse}audio:not([controls]),template{display:none}details,main,summary{display:block}input[type=number]{width:auto}input[type=search]{-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}progress{display:inline-block}small{font-size:75%}[unselectable]{user-select:none}*,::after,::before{box-sizing:inherit;text-decoration:inherit;vertical-align:inherit;border-style:solid;border-width:0}*{color:inherit;font-family:inherit;font-size:inherit;font-style:inherit;line-height:inherit;border-collapse:inherit}*,:after,:before,body,html{margin:0;padding:0;outline:0;border:none}:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;text-size-adjust:100%;box-sizing:border-box;cursor:default;font-family:sans-serif;line-height:1.5em;text-rendering:optimizeLegibility;vertical-align:top}a{text-decoration:none;}button,input,select,textarea{background:0 0}code,kbd,pre,samp{font-family:monospace,monospace}input{min-height:1.5em}nav ol,nav ul, ol, ul{list-style:none}select{-moz-appearance:none;-webkit-appearance:none}select::-ms-expand{display:none}select::-ms-value{color:currentColor}textarea{resize:vertical}::selection{color:#fff;background-color:#444;text-shadow:none}@media screen{[hidden~=screen]{display:inherit}[hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0;border:none}button{overflow:visible}table{border-spacing:0}:not(body){background-repeat:no-repeat;background-position:50%;background-size:cover}[hidden]{display:none!important}
 sub, sup { 
     vertical-align: baseline; 
     font-size: 80%;
@@ -21,7 +21,111 @@ strong {
     vertical-align: baseline;
 }
 
-/* LAYOUT *********************************************************************/
+/* DEFAULT FONTS **************************************************************/
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+i,
+time,
+small {
+    font-family: "Open Sans", "Helvetica Neue", "Verdana", sans-serif;
+    word-wrap: break-word;
+    font-weight: 400;
+}
+
+p,
+a:not(.u-link-reset),
+li,
+i,
+time {
+    line-height: 1.8rem;
+    font-size: 1.2rem;
+}
+
+code {
+    font-family: "Menlo", "Lucida Console", monospace;
+    font-size: 1rem;
+    word-wrap: break-word;
+}
+
+code {
+    display: block;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow: scroll
+}
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+p code,
+i code,
+a code,
+li code {
+    display: inline;
+    padding: .2rem .4rem;
+    vertical-align: top;
+    margin: 0;
+    border-radius: .3rem
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+}
+h2 {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+}
+h3 {
+    font-size: 1.4rem;
+}
+
+/* DEFAULT LINKS **************************************************************/
+a:link:not(.u-link-reset) {
+    color: #006fff;
+    border-bottom: .15rem dotted;
+}
+a:hover:not(.u-link-reset),
+a:focus:not(.u-link-reset),
+a:active:not(.u-link-reset) {
+    color: #006fff;
+    border-bottom: .15rem solid;
+}
+a:visited:not(.u-link-reset) {
+    color: #8a8a8a;
+    border-bottom: .15rem dotted;
+}
+
+/* DEFAULT COLOR **************************************************************/
+html {
+    color: black;
+}
+body {
+    background-color: white;
+}
+
+code {
+    background-color: black;
+    color: #65ff46;
+}
+
+/* LAYOUT ETC *****************************************************************/
 html, body {
     height: 100%;
     width: 100%;
@@ -155,18 +259,10 @@ ol.footnotes li {
     text-align: center;
     margin-bottom: 2rem;
 }
-.post-list h1 {
-    font-size: 2.4rem;
-    font-weight: 400;
-    line-height: 3.6rem;
-    display: block;
+.post-list-post-title {
+    display: inline-block;
     margin-bottom: .5rem;
-}
-.post-list a {
-    color: #006fff;
-    border-bottom: 1px dotted;
-    line-height: 1.6rem;
-    font-size: 1.2rem;
+    border-bottom: none;
 }
 .post-list li {
     margin-bottom: 4rem;
@@ -226,128 +322,33 @@ ol.footnotes li {
 }
 
 /* FONTS **********************************************************************/
-html,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-li,
-i,
-time,
-small {
-    font-family: "Open Sans", "Helvetica Neue", "Verdana", sans-serif;
-    word-wrap: break-word;
-    font-weight: 400;
-}
-
-p,
-a,
-li,
-i,
-time {
-    line-height: 1.8rem;
-    font-size: 1.2rem;
-}
-
-code {
-    font-family: "Menlo", "Lucida Console", monospace;
-    font-size: 1rem;
-    word-wrap: break-word;
-}
-
-code {
-    display: block;
-    border-radius: .5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    overflow: scroll
-}
-h1 code,
-h2 code,
-h3 code,
-h4 code,
-h5 code,
-h6 code,
-p code,
-i code,
-a code,
-li code {
-    display: inline;
-    padding: .2rem .4rem;
-    vertical-align: top;
-    margin: 0;
-    border-radius: .3rem
-}
-
-i,
-em {
-    font-style: italic;
-}
-
-h1 {
-    font-size: 2.4rem;
-    line-height: 3.6rem;
-}
-h2 {
-    font-size: 1.8rem;
-    line-height: 2.8rem;
-}
-h3 {
-    font-size: 1.4rem;
-}
-
-.link-nav {
-    line-height: 2rem;
-}
 .masthead {
     font-size: 2.4rem;
     line-height: 2rem;
 }
+.post-list-post-title {
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+}
 
 /* LINKS **********************************************************************/
-
-a:link:not(.u-link-plain) {
-    /* blue with more green 
-    color: #009cff; */
-    color: #006fff;
-    border-bottom: .15rem dotted;
-}
-a:hover:not(.u-link-plain),
-a:focus:not(.u-link-plain),
-a:active:not(.u-link-plain) {
-    color: #006fff;
-    border-bottom: .15rem solid;
-}
-a:visited:not(.u-link-plain) {
-    color: #8a8a8a;
-    border-bottom: .15rem dotted;
-}
-
+.link-nav,
 .link-nav:link,
 .link-nav:hover,
 .link-nav:focus,
 .link-nav:active,
 .link-nav:visited {
-    color: white !important;
+    color: white !important; /* Gets overriden otherwise */
+    line-height: 2rem;
+}
+.post-list-post-title {
+    color: #006fff;
+}
+.post-list-post-title:visited {
+    color: #8a8a8a;
 }
 
 /* COLOR **********************************************************************/
-html {
-    color: black;
-}
-body {
-    background-color: white;
-}
-
-code {
-    background-color: black;
-    color: #65ff46;
-}
-
 header, footer {
     background-color: #006fff;
     color: white;
@@ -358,7 +359,7 @@ header, footer {
     color: #888888;
 }
 
-/* SMALL SCREENS **************************************************************/
+/* NARROW SCREENS *************************************************************/
 @media (max-width: 36rem) {
 
     h1 {
@@ -422,6 +423,9 @@ header, footer {
     text-align: center !important;
 }
 
+/* .u-link-reset: Resets the link to its inherited appearance, so it can be styled individually. */
+.u-link-reset{}
+
 /* Something that looks (and probably acts) like a link, but isn't really an <a> */
 .u-link-pseudo {
     color: #006fff !important;
@@ -437,15 +441,6 @@ header, footer {
 .u-link-pseudo-no-underline {
     color: #006fff !important;
     cursor: pointer !important;
-}
-
-/* .u-plainLink: a link that looks like normal text */
-.u-link-plain,
-.u-link-plain:visited,
-.u-link-plain:hover,
-.u-link-plain:focus,
-.u-link-plain:active {
-    border: none;
 }
 
 /* Use for external links. Adds an icon to tell the user the URL is on a different site. */
