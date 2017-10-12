@@ -1,6 +1,68 @@
 // core.js - JS that can run after content is loaded
 ////////////////////////////////////////////////////////////////////////////////
 
+// Handles all the clicks on the page. Decides which function to call when something is clicked.
+var clickHandler = {
+    event: {}
+    ,target: {}
+
+    // Chooses which function to call, based on what was clicked etc.
+    // Called by event listener, so [this] != clickHandler.
+    ,exe: function(e) {                     // e(vent)
+        clickHandler.event = e;             // Set event
+        clickHandler.target = e.target;     // Set target
+
+        // Internal link: Check if target is an <a> and has proper href (starts with #/)
+        if(e.target.nodeName === "A" && e.target.getAttribute("href").substring(0,2) === "#/") {
+            clickHandler.internalLinkWasClicked(e.target); 
+        }
+
+        // On-page link
+        if(e.target.className.indexOf("u-link-onpage") !== -1) onpageLinkHandler.linkWasClicked(e.target);
+        if(e.target.className.indexOf("u-backbutton-link-onpage") !== -1) onpageLinkHandler.backButtonWasClicked();
+
+        // Portfolio
+        if(currentPage.url === "/_work.html") {
+            // Portfolio image is clicked
+            if(e.target.className.indexOf("portfolio-image") !== -1 ) {
+                portfolioHandler.imageWasClicked(e.target);
+            }
+            // Caption text is clicked
+            if(e.target.className.indexOf("portfolio-caption") !== -1 ) {
+                portfolioHandler.clickedAgain(e.target);
+            }
+            // Caption box *containing* the text is clicked (the Parent element)
+            if(e.target.parentElement.className.indexOf("portfolio-caption") !== -1 ) {
+                portfolioHandler.clickedAgainP(e.target);
+            }
+        }
+
+    } // end exe
+
+    ,internalLinkWasClicked: function(target) {
+        this.event.preventDefault();            // Prevent unwanted default behavior. [this] = clickHandler.
+        this.event.stopPropagation();           // We're done with the event now
+        var url = this.target.getAttribute("href").substring(1); // Url from root, eg [/_me.html]. No hash.
+
+        // Detect if user wanted to open link in new tab
+        if( this.event.ctrlKey || 
+            this.event.shiftKey || 
+            this.event.metaKey ||                           // Apple command key
+            (this.event.button && this.event.button == 1)   // Middle click
+        ) {
+            var newTabUrl = "/index.html#" + url;           // Create off-page link
+            var win = window.open(newTabUrl, "_blank");     // Create new tab
+            if(win) {           // If we were able to create the new tab (eg wasn't blocked by popup blocker)
+                win.focus();    // Go to new tab
+                return;         // Return from function so that content is not loaded in original page.
+            } else alert("Could not open link in new tab. Maybe it was blocked by your popup blocker.");
+        }
+
+        loadPage(url);      // Load content in current page.
+    }
+};
+
+
 var onpageLinkHandler = {
 
     link: {}
@@ -92,6 +154,6 @@ function hideLoadingNotification(){
 // code that runs
 
 // Runs after page is loaded
-function runAfterPageLoadsCore() {
+(function runAfterPageLoadsCore() {
     // hideLoadingNotification();
-}
+})();
