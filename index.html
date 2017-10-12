@@ -14,7 +14,7 @@
      
     <header>
         <nav>
-            <a href="#/_home.html" class="u-link-plain masthead">Michael Williams</a>
+            <a href="#/_home.html" class="u-link-reset masthead">Michael Williams</a>
             <a href="#/_posts.html" class="link-nav">Blog</a>
             <a href="#/_work.html" class="link-nav">Work</a>
             <a href="#/_me.html" class="link-nav">Me</a>
@@ -42,9 +42,9 @@
 
     <footer>
         <div class="social-links-div">
-            <a href="mailto:33a1eb@williams.blue" class="iconsprite iconsprite-email u-link-plain">Email</a>
-            <a href="https://github.com/michaeljwilliams" class="iconsprite iconsprite-github u-link-plain">Code</a>
-            <a href="https://open.spotify.com/user/mwilliaams" class="iconsprite iconsprite-spotify u-link-plain">I wanna rock!</a>
+            <a href="mailto:33a1eb@williams.blue" class="iconsprite iconsprite-email u-link-reset">Email</a>
+            <a href="https://github.com/michaeljwilliams" class="iconsprite iconsprite-github u-link-reset">Code</a>
+            <a href="https://open.spotify.com/user/mwilliaams" class="iconsprite iconsprite-spotify u-link-reset">I wanna rock!</a>
         </div>
         <small>Michael Williams</small>
     </footer>
@@ -140,6 +140,25 @@
             if(cb) cb(url, where);
         }
 
+        // Handles all the clicks on the page. Decides which function to call when something is clicked.
+        var clickHandler = {
+            event: {}
+            ,target: {}
+            ,exec: function(event) {
+                this.event = event;             // Set event
+                this.target = event.target;     // Set target
+                this.decider();
+            }
+
+            ,decider: function() {
+
+            }
+
+        };
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
         // Does something when something is clicked
         function somethingWasClicked(event) {   // Runs when something is clicked.
         var target = event.target;              // The thing that was clicked
@@ -177,6 +196,9 @@
 
 
         }
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
         // Loads the page
         function loadPage(whichPage) {
