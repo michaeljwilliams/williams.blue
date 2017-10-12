@@ -13,11 +13,14 @@
 </section>
 
 <script>
-    var selfie = document.createElement("img");
-    selfie.innerHTML = '<img src="/img/selfie.jpg" alt="selfie" class="selfie">';
-    addContent(".about-me-section", selfie);
-
     currentPage.title = "Michael Williams - About";
+
+    var selfie = document.createElement("img");
+    selfie.setAttribute("src", "/img/selfie.jpg");
+    selfie.setAttribute("alt", "Selfie");
+    selfie.setAttribute("class", "selfie");
+
+    addContent(".about-me-section", selfie);
     
 
 
