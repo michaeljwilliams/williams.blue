@@ -74,7 +74,7 @@ a code,
 li code {
     display: inline;
     padding: .2rem .4rem;
-    vertical-align: top;
+    vertical-align: baseline;
     margin: 0;
     border-radius: .3rem
 }
@@ -235,6 +235,7 @@ footer {
 }
 .blog-post ul li {
     padding: 0 1rem;
+    margin-bottom: .6rem;
 }
 .blog-post ol li {
     margin: 0 1.2rem;
