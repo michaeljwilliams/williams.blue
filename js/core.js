@@ -12,9 +12,14 @@ var clickHandler = {
         clickHandler.event = e;             // Set event
         clickHandler.target = e.target;     // Set target
 
-        // Internal link: Check if target is an <a> and has proper href (starts with #/)
+        // Internal link: Check if target is an <a> and href starts with [#/]
         if(e.target.nodeName === "A" && e.target.getAttribute("href").substring(0,2) === "#/") {
             clickHandler.internalLinkWasClicked(e.target); 
+        }
+
+        // External link: Check if target is an <a> and first char in href is not [#]
+        if(e.target.nodeName === "A" && e.target.getAttribute("href").substring(0,1) !== "#") {
+            clickHandler.externalLinkWasClicked(e.target); 
         }
 
         // On-page link
@@ -39,6 +44,7 @@ var clickHandler = {
 
     } // end exe
 
+    // Run when an internal link is clicked (a williams.blue link)
     ,internalLinkWasClicked: function(target) {
         this.event.preventDefault();            // Prevent unwanted default behavior. [this] = clickHandler.
         this.event.stopPropagation();           // We're done with the event now
@@ -59,6 +65,18 @@ var clickHandler = {
         }
 
         loadPage(url);      // Load content in current page.
+    }
+
+    // Run when an external link is clicked (not a williams.blue link)
+    ,externalLinkWasClicked: function(target) {
+        this.event.preventDefault();            // Prevent unwanted default behavior. [this] = clickHandler.
+        this.event.stopPropagation();           // We're done with the event now
+        var url = this.target.getAttribute("href");
+
+        var win = window.open(url, "_blank");     // Create new tab
+        if(win) {           // If we were able to create the new tab (eg wasn't blocked by popup blocker)
+            win.focus();    // Go to new tab
+        } else alert("Could not open link in new tab. Maybe it was blocked by your popup blocker.");        
     }
 };
 
