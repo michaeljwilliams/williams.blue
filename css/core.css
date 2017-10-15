@@ -52,15 +52,7 @@ time {
 code {
     font-family: "Menlo", "Lucida Console", monospace;
     font-size: 1rem;
-    word-wrap: break-word;
-}
-
-code {
-    display: block;
-    border-radius: .5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    overflow: scroll
+    /* word-wrap: break-word; */
 }
 h1 code,
 h2 code,
@@ -76,7 +68,8 @@ li code {
     padding: .2rem .4rem;
     vertical-align: baseline;
     margin: 0;
-    border-radius: .3rem
+    border-radius: .3rem;
+    white-space: nowrap;
 }
 
 i,
@@ -135,6 +128,13 @@ li {
 }
 sup span {
     padding: .1rem;
+}
+code {
+    display: block;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow: scroll;
 }
 
 .selfie {
@@ -413,8 +413,8 @@ header, footer {
 .u-link-onpage {}
 .u-backbutton-link-onpage {
     position: absolute;
-    top: -4rem;
-    right: 4rem;
+    top: -3rem;
+    right: 3rem;
 }
 
 .u-position-relative {
