@@ -50,6 +50,9 @@ var clickHandler = {
         this.event.stopPropagation();           // We're done with the event now
         var url = this.target.getAttribute("href").substring(1); // Url from root, eg [/_me.html]. No hash.
 
+        // If a link is clicked, we're not moving through history anymore.
+        currentPage.historical = false;
+
         // Detect if user wanted to open link in new tab
         if( this.event.ctrlKey || 
             this.event.shiftKey || 
