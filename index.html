@@ -13,7 +13,7 @@
 <body>
      
     <header>
-        <nav>
+        <nav class="u-_is-absent">
             <a href="#/_home.html" class="u-link-reset masthead">Michael Williams</a>
             <a href="#/_posts.html" class="link-nav">Blog</a>
             <a href="#/_work.html" class="link-nav">Work</a>
@@ -24,7 +24,7 @@
     <main><div>
         <section class="no-js">
             <p style="color: #006fff">Please use a web browser with JavaScript enabled to view the full site.</p>
-            <h2>About me</h2>
+            <h1>Michael Williams</h1>
             <p>
                 Hi! I'm a designer, developer, and user experience activist. I love making the Web a better place by creating elegant, functional designs and user experiences and easy-to-use, fast websites. <a href="mailto:33a1eb@williams.blue">Send me an email!</a>
                 <br><br>
@@ -34,9 +34,12 @@
                 <br><br>
             </p>
         </section>
-        <!-- Removes the no-JS content if JS is enabled. -->
+        <!-- If JS is enabled, remove the no-JS content and show the nav bar. -->
         <script>
-            (function(){var a=document.querySelector(".no-js");if(a){a.parentNode.removeChild(a);}})();
+            (function(){
+                var a=document.querySelector(".no-js");a.parentNode.removeChild(a);
+                document.querySelector("nav").classList.remove("u-_is-absent");
+            })();
         </script>
     </div></main>
 

@@ -90,7 +90,7 @@ h1 {
 }
 h2 {
     font-size: 1.8rem;
-    line-height: 2.8rem;
+    line-height: 2.6rem;
 }
 h3 {
     font-size: 1.4rem;
@@ -129,6 +129,9 @@ code {
 html, body {
     height: 100%;
     width: 100%;
+}
+li {
+    margin-bottom: .6rem;
 }
 sup span {
     padding: .1rem;
@@ -180,7 +183,7 @@ sup span {
 }
 
 main {
-    min-height: calc(100% - 8rem);
+    min-height: calc(100% - 10rem);
     width: 100%;
     padding: 1rem;
 }
@@ -205,7 +208,6 @@ header, footer {
 }
 
 header {
-    margin-bottom: 1rem;
 }
 .link-nav, .masthead {
     display: inline-block;
@@ -220,25 +222,29 @@ header {
 
 footer {
     text-align: center;
-    margin-top: 1rem;
     padding: 1rem;
 }
 
 .paragraph-group {
     margin-bottom: 3rem;
 }
-.blog-post p, .blog-post ul, .blog-post ol {
+.blog-post p,
+.blog-post ul,
+.blog-post ol {
     padding-bottom: 1.4rem;
+}
+.blog-post h2 {
+    padding-bottom: 1rem;
 }
 .blog-post ul {
     position: relative;
 }
 .blog-post ul li {
     padding: 0 1rem;
-    margin-bottom: .6rem;
 }
 .blog-post ol li {
-    margin: 0 1.2rem;
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
     padding: 0 .5rem;
 }
 .blog-post ul li::before { /* If we do it the normal way, the bullet is way too big. */
@@ -253,7 +259,8 @@ ol.footnotes {
     list-style: decimal inside none;
 }
 ol.footnotes li {
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .post-start {
