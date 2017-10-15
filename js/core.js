@@ -80,7 +80,6 @@ var clickHandler = {
     }
 };
 
-
 var onpageLinkHandler = {
 
     link: {}
