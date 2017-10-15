@@ -208,6 +208,7 @@ header, footer {
 }
 
 header {
+    margin-bottom: 2rem;
 }
 .link-nav, .masthead {
     display: inline-block;
