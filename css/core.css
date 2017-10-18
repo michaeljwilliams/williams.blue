@@ -414,8 +414,8 @@ header, footer {
 .u-link-onpage {}
 .u-backbutton-link-onpage {
     position: absolute;
-    top: -3rem;
-    right: 3rem;
+    bottom: -2.5rem;
+    right: 1rem;
 }
 
 .u-position-relative {
@@ -474,10 +474,10 @@ header, footer {
 /* Button - simple */
 .u-button-simple {
     border-radius: .5rem;
-    border: .2rem solid #006fff;
-    color: #006fff;
-    padding: .3rem;
-    background-color: white;
+    border: .2rem solid white;
+    color: white;
+    padding: .4rem;
+    background-color: #006fff;
 }
 
 /* Loading notification */
