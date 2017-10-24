@@ -63,11 +63,22 @@
             ,historical: false
         };
 
+        // Necessary so that we can set history entry properly on first load.
+        var firstLoad = true;
+
+        var logging = false;
+        // if(logging===true) console.log("", "\n\n");
+
         ////////////////////////////////////////////////////////////////////////////////
         // Code that runs when page initially loads.
 
+        console.log("logging: ", logging, "\n\n");
+
         window.onpopstate = function(event) {
             if(event.state !== currentPage) {
+                if(logging===true) console.log("Pop! moving through history");
+                if(logging===true) console.log("popstate event: ", event, "\n\n");
+
                 currentPage = event.state;
                 currentPage.historical = true;
                 loadPage(event.state.url);
@@ -81,34 +92,57 @@
         // Functions
 
         function asyncGet(url, cb, errcb) { // Extra args will be passed to cb
+            if(logging===true) {
+                console.log("asyncGet(url, cb, errcb):");
+                console.log("    url: ", url);
+                console.log("    cb: ", cb);
+                console.log("    errcb: ", errcb);
+                console.log("caller: ", asyncGet.caller, "\n\n")
+            }
+
             var xhr = new XMLHttpRequest();
             xhr.open("GET", url, true);
             xhr.send(null);
 
             xhr.timeout = 10000;
             xhr.ontimeout = function() {
-                console.error("asyncGet: The request for " + url + " timed out after 5 seconds.");
+                console.error("asyncGet: The request for " + url + " timed out after 5 seconds.", "\n\n");
             };
 
             xhr.onload = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     cb(xhr.response);
                 } else { // Log error to console
-                    console.error("asyncGet: The request for " + url + " failed with error: " + xhr.statusText);
+                    console.error("asyncGet: The request for " + url + " failed with error: " + xhr.statusText, "\n\n");
                     if(errcb) errcb(url);               // Call errcb if given
                 }
             };
         }
 
         function addContent(where, content) {
-                document.querySelector(where).appendChild(content);
+            if(logging===true) {
+                console.log("addContent(where, content):");
+                console.log("    where: ", where);
+                console.log("    content: ", content);
+                console.log("caller: ", addContent.caller, "\n\n")
+            }
+
+            document.querySelector(where).appendChild(content);
         }
 
         // Asynchronously retrieves content, loads into the given location, and calls cb when done.
         function loadContentIntoElement(url, where, cb) {
-            asyncGet(url, asyncGetCb);
+            if(logging===true) {
+                console.log("loadContentIntoElement(url, where, cb):");
+                console.log("    url: ", url);
+                console.log("    where: ", where);
+                console.log("    cb: ", cb);
+                console.log("caller: ", loadContentIntoElement.caller, "\n\n")
+            }
 
-            function asyncGetCb(content) {
+            asyncGet(url, parseAsyncContent);
+
+            function parseAsyncContent(content) {
                 var parser = new DOMParser();                           // Create a parser for the content
                 content = parser.parseFromString(content,"text/html");   // Parse content to create an xml object
 
@@ -143,7 +177,12 @@
 
         // Loads the page
         function loadPage(whichPage) {
-            //debugger;
+            if(logging===true) {
+                console.log("loadPage(whichPage):");
+                console.log("    whichPage: ", whichPage);
+                console.log("caller: ", loadPage.caller, "\n\n")
+            }
+
             // Load the page from the url
             if(!whichPage) {
                 // If a hash with a slash (#/) is present in the url, attempt to load the content at that path
@@ -152,7 +191,7 @@
                     whichPage = hash;
                 } else whichPage = "/_home.html";
             // Load the page from the given value of whichPage
-            } else {
+            } else { // Stuff that should happen if whichPage is given as a parameter
             }
 
             // Remove old content
@@ -163,7 +202,9 @@
             if(currentPage.historical === false) {
                 currentPage.url = whichPage;
             }
-            console.log(currentPage.url);
+
+            if(logging===true) console.log("----------------------------------------");
+            if(logging===true) console.log("Current page: " + currentPage.url, "\n\n");
 
             loadContentIntoElement(whichPage, "main");          // Load remote content into main.
         }
@@ -172,11 +213,25 @@
         // after the new content has been parsed, if no scripts are present.
         // Consider how important things are before putting them here instead of /js/core.js.
         function runAfterPageLoad(url, where) {
+            if(logging===true) {
+                console.log("runAfterPageLoad(url, where):");
+                console.log("    url: ", url);
+                console.log("    where: ", where)
+                console.log("caller: ", runAfterPageLoad.caller, "\n\n");
+            }
 
             // Add history entry and change URL to reflect the new page - unless we're already moving through 
             // the browser history, in which case these values are already set.
             if(currentPage.historical === false) {
-                history.pushState(currentPage, currentPage.title, "/index.html#" + currentPage.url);
+                if(firstLoad === false) {
+                    history.pushState(currentPage, currentPage.title, "/index.html#" + currentPage.url);
+                    if(logging===true) console.log("History entry added: ");
+                    if(logging===true) console.log(currentPage, "\n\n");
+                } else {
+                    history.replaceState(currentPage, currentPage.title, "/index.html#" + currentPage.url);
+                    if(logging===true) console.log("History entry replaced (first load): ");
+                    if(logging===true) console.log(currentPage, "\n\n");
+                }
             }
 
             // Update page title
@@ -198,6 +253,7 @@
             // Listen for clicks on the page
             document.body.addEventListener("click", clickHandler.exe, false);
 
+            firstLoad = false;
         }
 
     </script>
