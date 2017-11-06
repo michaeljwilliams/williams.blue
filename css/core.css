@@ -547,3 +547,7 @@ span[data-link-onpage*=footnote] {
             color: black;
         }
     }
+
+.u-_is-current-nav-link {
+    border-bottom-style: solid;
+}

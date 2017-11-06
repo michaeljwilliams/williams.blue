@@ -244,10 +244,10 @@
                 var b = currentPage.url;                                // So we can type less
 
                 for(var i = 0, l = a.length; i < l; i ++) {
-                    a[i].style.borderBottomStyle = "dotted";
+                    a[i].classList.remove("u-_is-current-nav-link");
                 }
                 if(b === "/_posts.html" || b === "/_work.html" || b === "/_me.html") {
-                    document.querySelector('.link-nav[href*="' + b + '"]').style.borderBottomStyle = "solid";
+                    document.querySelector('.link-nav[href*="' + b + '"]').classList.add("u-_is-current-nav-link");
                 }
             })();
 
