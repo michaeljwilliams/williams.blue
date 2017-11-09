@@ -12,6 +12,12 @@ var clickHandler = {
         clickHandler.event = e;             // Set event
         clickHandler.target = e.target;     // Set target
 
+        if(logging===true) {
+            console.log("clickHandler.exe: Something was clicked");
+            console.log("    event: ", event);
+            console.log("    target: ", e.target, "\n\n");
+        }
+
         // Internal link: Check if target is an <a> and href starts with [#/]
         if(e.target.nodeName === "A" && e.target.getAttribute("href").substring(0,2) === "#/") {
             clickHandler.internalLinkWasClicked(e.target); 
