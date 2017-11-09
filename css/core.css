@@ -521,7 +521,7 @@ span[data-link-onpage*=footnote] {
 
 /* State utility classes - these are meant to be added or removed to turn them on and off */
 
-/* Use to hide things and remove them from document flow */
+/* Use to hide things AND remove them from document flow */
 .u-_is-absent {
     display: none !important;
 }
@@ -531,6 +531,7 @@ span[data-link-onpage*=footnote] {
     visibility: hidden !important;
 }
 
+/* Draw attention to something by giving it a yellow highlight background. */
 .u-_lookatme {
     animation-name: lookatme;
     animation-duration: 1.5s; 
