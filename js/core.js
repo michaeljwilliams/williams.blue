@@ -13,8 +13,8 @@ var clickHandler = {
         clickHandler.target = e.target;     // Set target
 
         if(logging===true) {
-            console.log("clickHandler.exe: Something was clicked");
-            console.log("    event: ", event);
+            console.log("clickHandler: Something was clicked");
+            console.log("    event: ", e);
             console.log("    target: ", e.target, "\n\n");
         }
 
