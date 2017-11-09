@@ -452,6 +452,32 @@ span[data-link-onpage*=footnote] {
     text-align: center !important;
 }
 
+.u-text-align-right {
+    text-align: right;
+}
+
+.u-flex-justified {
+    display: flex;
+    justify-content: space-between;
+}
+
+.u-indent-left {
+    padding: 0 0 0 1rem;
+}
+
+.u-outdent-left{
+    text-indent: -1rem;
+    padding-left: 1rem;
+}
+
+.u-spacing-textblock {
+    margin-bottom: 1rem;
+}
+
+.u-nowrap-phrase {
+    white-space: nowrap;
+}
+
 /* .u-link-reset: Resets the link to its inherited appearance, so it can be styled individually. */
 .u-link-reset{}
 
