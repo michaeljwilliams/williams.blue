@@ -466,8 +466,8 @@ span[data-link-onpage*=footnote] {
 }
 
 .u-outdent-left{
-    text-indent: -1.8rem;
-    padding-left: 1.8rem;
+    text-indent: -.9rem;
+    padding-left: .9rem;
 }
 
 .u-spacing-textblock {
