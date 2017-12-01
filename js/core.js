@@ -3,8 +3,8 @@
 
 // Handles all the clicks on the page. Decides which function to call when something is clicked.
 var clickHandler = {
-    event: {}
-    ,target: {}
+    event: {},
+    target: {}
 
     // Chooses which function to call, based on what was clicked etc.
     // Called by event listener, so [this] != clickHandler.
