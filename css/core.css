@@ -91,13 +91,13 @@ h3 {
 
 /* DEFAULT LINKS **************************************************************/
 a:link:not(.u-link-reset) {
-    color: #006fff;
+    color: #00aaff;
     border-bottom: .15rem dotted;
 }
 a:hover:not(.u-link-reset),
 a:focus:not(.u-link-reset),
 a:active:not(.u-link-reset) {
-    color: #006fff;
+    color: #00aaff;
     border-bottom: .15rem solid;
 }
 a:visited:not(.u-link-reset) {
@@ -152,7 +152,7 @@ code {
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: content-box;
-    border-color: #006fff;
+    border-color: #00aaff;
 }
 
 .iconsprite {
@@ -366,15 +366,19 @@ span[data-link-onpage*=footnote] {
     line-height: 2rem;
 }
 .post-list-post-title {
-    color: #006fff;
+    color: #00aaff;
 }
 .post-list-post-title:visited {
     color: #8a8a8a;
 }
 
 /* COLOR **********************************************************************/
+/* really blue: #006fff
+ * aqua: #00aaff
+ */
+
 header, footer {
-    background-color: #006fff;
+    background-color: #00aaff;
     color: white;
 }
 
@@ -385,7 +389,7 @@ header, footer {
 
 /* Footnotes */
 span[data-link-onpage*=footnote] {
-    background-color: #006fff;
+    background-color: #00aaff;
 }
 
 /* NARROW SCREENS *************************************************************/
@@ -483,7 +487,7 @@ span[data-link-onpage*=footnote] {
 
 /* Something that looks (and probably acts) like a link, but isn't really an <a> */
 .u-link-pseudo {
-    color: #006fff !important;
+    color: #00aaff !important;
     border-bottom: .15rem dotted !important;
     cursor: pointer !important;
 }
@@ -494,7 +498,7 @@ span[data-link-onpage*=footnote] {
     cursor: pointer !important;
 }
 .u-link-pseudo-no-underline {
-    color: #006fff !important;
+    color: #00aaff !important;
     cursor: pointer !important;
 }
 
@@ -523,14 +527,14 @@ span[data-link-onpage*=footnote] {
     border: .2rem solid white;
     color: white;
     padding: .4rem;
-    background-color: #006fff;
+    background-color: #00aaff;
 }
 
 /* Loading notification */
 .u-notification-loading {
     border-radius: .5rem;
     border: .2rem solid white;
-    background-color: #006fff;
+    background-color: #00aaff;
     text-align: center;
     color: white;
     padding: 1rem;
