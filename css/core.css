@@ -91,13 +91,13 @@ h3 {
 
 /* DEFAULT LINKS **************************************************************/
 a:link:not(.u-link-reset) {
-    color: #006fff;
+    color: #00aaff;
     border-bottom: .15rem dotted;
 }
 a:hover:not(.u-link-reset),
 a:focus:not(.u-link-reset),
 a:active:not(.u-link-reset) {
-    color: #006fff;
+    color: #00aaff;
     border-bottom: .15rem solid;
 }
 a:visited:not(.u-link-reset) {
