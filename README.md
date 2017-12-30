@@ -1,1 +1,1 @@
-Source for my personal website: https://williams.blue
+My personal website: https://williams.blue
