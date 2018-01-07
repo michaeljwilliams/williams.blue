@@ -199,7 +199,6 @@ main > div > article:not(.full-width) {
 nav {
     max-width: 44rem;
     margin: 0 auto 0 auto;
-    padding: 1.3rem .5rem 1rem .5rem;
 }
 
 header, footer {
@@ -209,6 +208,7 @@ header, footer {
 
 header {
     margin-bottom: 2rem;
+    padding: 1.3rem .5rem 1rem .5rem;
 }
 .link-nav, .masthead {
     display: inline-block;
@@ -365,6 +365,10 @@ span[data-link-onpage*=footnote] {
     color: white !important; /* Gets overriden otherwise */
     line-height: 2rem;
 }
+.link-nav:focus:not(.u-_is-current-nav-link) {
+    border-bottom: .15rem dotted !important;
+}
+
 .post-list-post-title {
     color: #00aaff;
 }
@@ -580,5 +584,5 @@ span[data-link-onpage*=footnote] {
     }
 
 .u-_is-current-nav-link {
-    border-bottom-style: solid;
+    border-bottom-style: solid !important; /* Gets overriden otherwise */
 }
