@@ -1,23 +1,4 @@
-<!-- /_home.html -->
-<!-- Links should start from /root because the final compiled page is at an arbitrary location. -->
-<div>
-    <section class="about-me-section">
-        <h2>About me</h2>
-        <p>
-            Hi! I'm a designer, developer, and user experience activist. I love making the Web a better place by creating elegant, functional designs and user experiences and easy-to-use, fast websites. I also enjoy sharing <a href="#/_posts.html">my ideas</a> and <a href="#/_work.html">my work</a>. <a href="mailto:33a1eb@williams.blue">Send me an email!</a>
-        </p>
-    </section>
-
-    <section>
-        <h2>Recent posts</h2>
-        <ol class="post-list">
-            
-        </ol>
-    </section>
-</div>
-
-<script>
-    asyncGet("/_posts.html", loadRecentPosts);
+<!-- /_home.html --><!-- Links should start from /root because the final compiled page is at an arbitrary location. --><div><section class="about-me-section"><h2>About me</h2><p>Hi! I'm a designer, developer, and user experience activist. I love making the Web a better place by creating elegant, functional designs and user experiences and easy-to-use, fast websites. I also enjoy sharing <a href="#/_posts.html">my ideas</a> and <a href="#/_work.html">my work</a>. <a href="mailto:33a1eb@williams.blue">Send me an email!</a></p></section><section><h2>Recent posts</h2><ol class="post-list"></ol></section></div><script>asyncGet("/_posts.html", loadRecentPosts);
     currentPage.title = "Michael Williams";
 
     function loadRecentPosts(postList) {
@@ -36,5 +17,4 @@
 
 
         
-    runAfterPageLoad();}
-</script>
+    runAfterPageLoad();}</script>
