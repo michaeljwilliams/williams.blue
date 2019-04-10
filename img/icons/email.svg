@@ -1,1 +1,20 @@
-<svg width="274" height="209" xmlns="http://www.w3.org/2000/svg"><g fill="none"><rect fill="#FFF" width="274" height="209" rx="20"/><path d="M20 28.942l88.37 89.824a40.024 40.024 0 0 0 57.26 0L254 28.942v142.183c0 9.872-8.243 17.875-18.422 17.875H38.422C28.248 189 20 180.994 20 171.125V28.942z" fill="#DE5252"/><path d="M156.006 101.56c-10.496 10.76-27.518 10.757-38.012 0L38.425 20h197.15l-79.57 81.56z" fill="#DE5252"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M20,0 L254,0 C265.045695,-2.02906125e-15 274,8.954305 274,20 L274,173 C274,184.045695 265.045695,193 254,193 L20,193 C8.954305,193 1.3527075e-15,184.045695 0,173 L0,20 C-1.3527075e-15,8.954305 8.954305,2.02906125e-15 20,0 Z" id="path-1"></path>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="200" cy="200" r="200"></circle>
+        <g id="Group" transform="translate(63.000000, 104.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Rectangle"></g>
+            <path d="M103.474914,110.943564 C121.99041,129.721917 152.004197,129.72714 170.525086,110.943564 L274,6 L274,172.116592 C274,183.65 264.348512,193 252.428433,193 L21.571567,193 C9.65796066,193 0,183.646865 0,172.116592 L0,6 L103.474914,110.943564 Z" id="Shape" fill="#DE5252" mask="url(#mask-2)"></path>
+            <path d="M160.293272,104.647225 C146.877215,118.452645 125.119252,118.449204 111.706728,104.647225 L10,0 L262,0 L160.293272,104.647225 Z" id="Shape" fill="#DE5252" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>
