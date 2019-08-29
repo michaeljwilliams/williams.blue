@@ -8,6 +8,11 @@
 		<meta content="width=device-width,initial-scale=1" name="viewport" />
 		<link href="img/socket.svg" rel="icon" type="icon" />
 		<link href="css/main.css" rel="stylesheet" />
+		<script>
+			// Redirect http to https
+			const url = window.location
+			if(url.protocol === 'http:') window.location = `https:${url.toString().slice(5)}`
+		</script>
 	</head>
 
 	<body>
