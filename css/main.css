@@ -327,43 +327,8 @@ code {
     justify-content: center;
     align-items: center;
 }
-.homehero header p {
+.homehero p {
 	font-size: 2.4rem;
 	line-height: 3rem;
 	margin: 0 auto;
-}
-.homehero-links {
-	max-width: 40rem;
-	display: flex;
-	justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-.icon {
-	display: inline-block;
-	text-align: left;
-	line-height: 48px;
-	line-height: 3rem;
-	margin: 1.5rem;
-}
-.icon::before {
-	content: '';
-	display: inline-block;
-	width: 4rem;
-	height: 4rem;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-.icon-email::before {
-	background-image: url(../img/icons/email.svg);
-}
-.icon-octocat::before {
-	background-image: url(../img/icons/github.svg);
-}
-.icon-dribbble::before {
-	background-image: url(../img/icons/dribbble.svg);
-}
-.icon-spotify::before {
-	background-image: url(../img/icons/spotify.svg);
 }
