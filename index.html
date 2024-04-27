@@ -2,23 +2,42 @@
 <html lang="en-US">
 	<head>
 		<meta charset="utf-8" />
-		<title>Will</title>
-		<meta content="Will" name="description" />
-		<meta content="Will" name="author" />
+		<title>Michael Williams</title>
+		<meta content="Michael Williams" name="description" />
+		<meta content="Michael Williams" name="author" />
 		<meta content="width=device-width,initial-scale=1" name="viewport" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Permanent+Marker&display=swap" rel="stylesheet">
+
 		<link href="img/socket.svg" rel="icon" type="icon" />
 		<link href="css/main.css" rel="stylesheet" />
-		<script>
-			// Redirect http to https
-			const url = window.location
-			if(url.protocol === 'http:') window.location = `https:${url.toString().slice(5)}`
-		</script>
 	</head>
 
 	<body>
-		<main class="homehero">
-			<img class="logo" src="img/socket.svg" alt="Socket logo" />
-			<p>Hi, I'm Michael Williams.</p>
+		<main id="homehero">
+			<img id="logo" src="img/socket.svg" alt="Socket logo" />
+			<p id="me1">Michael Williams</p>
+			<p id="me2">Michael Williams</p>
+			<p id="me3">Michael Williams</p>
+			<p id="me4">Michael Williams</p>
 		</main>
 	</body>
+	<script>
+		const me = document.getElementById('me')
+		const range = 16
+
+		function updateMe(event) {
+			const x = Math.round(event.pageX * range / window.innerWidth) - range / 2
+			const y = Math.round(event.pageY * range / window.innerHeight) - range / 2
+			document.getElementById('me2').style.left = 3*x + 'px'
+			document.getElementById('me2').style.top = 'calc(-4rem + ' + 3*y + 'px)'
+			document.getElementById('me3').style.left = 5*x + 'px'
+			document.getElementById('me3').style.top = 'calc(-8rem + ' + 6*y + 'px)'
+			document.getElementById('me4').style.left = 7*x + 'px'
+			document.getElementById('me4').style.top = 'calc(-12rem + ' + 9*y + 'px)'
+		}
+		document.body.addEventListener('mousemove', updateMe)
+	</script>
 </html>

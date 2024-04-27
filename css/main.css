@@ -279,7 +279,7 @@ html {
 	background-color: #0af;
 }
 body {
-	background-color: #fff;
+	background-color: rgb(0, 27, 41);
 }
 code {
 	background-color: #000;
@@ -308,27 +308,52 @@ code {
 	margin-bottom: 1rem;
 	overflow: scroll;
 }
-.logo {
+#logo {
 	height: 3rem;
 	width: 3rem;
 	border-radius: 0.2rem;
-	margin: 0.5rem auto;
+	margin: 2rem auto;
 	display: block;
 }
-.homehero {
+#homehero {
 	text-align: center;
-	color: white;
-    background-color: #0af;
-    padding: 1rem;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	padding: 1rem;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
-.homehero p {
-	font-size: 2.4rem;
-	line-height: 3rem;
+#homehero p {
+	font-size: 4rem;
+	line-height: 4rem;
 	margin: 0 auto;
+	font-family: 'Permanent Marker', sans-serif;
+}
+#me1 {
+	position: relative;
+	z-index: 5;
+	color: white;
+}
+#me2 {
+	position: relative;
+	left: 12px;
+	top: calc(-4rem + 12px);
+	color: #0af;
+	z-index: 4;
+}
+#me3 {
+	position: relative;
+	left: 24px;
+	top: calc(-8rem + 24px);
+	color: rgb(0, 126, 188);
+	z-index: 3;
+}
+#me4 {
+	position: relative;
+	left: 36px;
+	top: calc(-12rem + 36px);
+	color: rgb(0, 82, 123);
+	z-index: 2;
 }
