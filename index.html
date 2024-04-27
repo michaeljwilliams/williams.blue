@@ -9,35 +9,166 @@
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Permanent+Marker&display=swap" rel="stylesheet">
-
-		<link href="img/socket.svg" rel="icon" type="icon" />
+		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		<main id="homehero">
-			<img id="logo" src="img/socket.svg" alt="Socket logo" />
-			<p id="me1">Michael Williams</p>
-			<p id="me2">Michael Williams</p>
-			<p id="me3">Michael Williams</p>
-			<p id="me4">Michael Williams</p>
-		</main>
+		<!--
+		<svg id="logo1" alt="Happy socket logo" width="800" height="800" viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_61_337)">
+			<path d="M800.5 0.860657H0.5V800.861H800.5V0.860657Z" fill="white"/>
+			<path d="M249.5 169.861H199.5C193.977 169.861 189.5 174.338 189.5 179.861V398.861C189.5 404.383 193.977 408.861 199.5 408.861H249.5C255.023 408.861 259.5 404.383 259.5 398.861V179.861C259.5 174.338 255.023 169.861 249.5 169.861Z" fill="#4A4A4A"/>
+			<path d="M603.5 193.861H563.5C557.977 193.861 553.5 198.338 553.5 203.861V373.861C553.5 379.383 557.977 383.861 563.5 383.861H603.5C609.023 383.861 613.5 379.383 613.5 373.861V203.861C613.5 198.338 609.023 193.861 603.5 193.861Z" fill="#4A4A4A"/>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M329.588 555.388C329.588 549.863 334.074 545.384 339.59 545.384H466.79C472.314 545.384 476.792 549.859 476.792 555.388V641.835C476.792 641.835 476.792 687.208 403.19 687.208C329.588 687.208 329.588 641.835 329.588 641.835V555.388Z" fill="#4A4A4A"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_61_337">
+			<rect x="0.5" y="0.860657" width="800" height="800" rx="32" fill="white"/>
+			</clipPath>
+			</defs>
+		</svg>
+		<svg id="logo2" alt="Happy socket logo" width="800" height="800" viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_61_337)">
+			<path d="M800.5 0.860657H0.5V800.861H800.5V0.860657Z" fill="#ff0000"/>
+			<path d="M249.5 169.861H199.5C193.977 169.861 189.5 174.338 189.5 179.861V398.861C189.5 404.383 193.977 408.861 199.5 408.861H249.5C255.023 408.861 259.5 404.383 259.5 398.861V179.861C259.5 174.338 255.023 169.861 249.5 169.861Z" fill="#4A4A4A"/>
+			<path d="M603.5 193.861H563.5C557.977 193.861 553.5 198.338 553.5 203.861V373.861C553.5 379.383 557.977 383.861 563.5 383.861H603.5C609.023 383.861 613.5 379.383 613.5 373.861V203.861C613.5 198.338 609.023 193.861 603.5 193.861Z" fill="#4A4A4A"/>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M329.588 555.388C329.588 549.863 334.074 545.384 339.59 545.384H466.79C472.314 545.384 476.792 549.859 476.792 555.388V641.835C476.792 641.835 476.792 687.208 403.19 687.208C329.588 687.208 329.588 641.835 329.588 641.835V555.388Z" fill="#4A4A4A"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_61_337">
+			<rect x="0.5" y="0.860657" width="800" height="800" rx="32" fill="white"/>
+			</clipPath>
+			</defs>
+		</svg>
+		<svg id="logo3" alt="Happy socket logo" width="800" height="800" viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_61_337)">
+			<path d="M800.5 0.860657H0.5V800.861H800.5V0.860657Z" fill="#00ff00"/>
+			<path d="M249.5 169.861H199.5C193.977 169.861 189.5 174.338 189.5 179.861V398.861C189.5 404.383 193.977 408.861 199.5 408.861H249.5C255.023 408.861 259.5 404.383 259.5 398.861V179.861C259.5 174.338 255.023 169.861 249.5 169.861Z" fill="#4A4A4A"/>
+			<path d="M603.5 193.861H563.5C557.977 193.861 553.5 198.338 553.5 203.861V373.861C553.5 379.383 557.977 383.861 563.5 383.861H603.5C609.023 383.861 613.5 379.383 613.5 373.861V203.861C613.5 198.338 609.023 193.861 603.5 193.861Z" fill="#4A4A4A"/>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M329.588 555.388C329.588 549.863 334.074 545.384 339.59 545.384H466.79C472.314 545.384 476.792 549.859 476.792 555.388V641.835C476.792 641.835 476.792 687.208 403.19 687.208C329.588 687.208 329.588 641.835 329.588 641.835V555.388Z" fill="#4A4A4A"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_61_337">
+			<rect x="0.5" y="0.860657" width="800" height="800" rx="32" fill="white"/>
+			</clipPath>
+			</defs>
+		</svg>
+		<svg id="logo4" alt="Happy socket logo" width="800" height="800" viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_61_337)">
+			<path d="M800.5 0.860657H0.5V800.861H800.5V0.860657Z" fill="#0000ff"/>
+			<path d="M249.5 169.861H199.5C193.977 169.861 189.5 174.338 189.5 179.861V398.861C189.5 404.383 193.977 408.861 199.5 408.861H249.5C255.023 408.861 259.5 404.383 259.5 398.861V179.861C259.5 174.338 255.023 169.861 249.5 169.861Z" fill="#4A4A4A"/>
+			<path d="M603.5 193.861H563.5C557.977 193.861 553.5 198.338 553.5 203.861V373.861C553.5 379.383 557.977 383.861 563.5 383.861H603.5C609.023 383.861 613.5 379.383 613.5 373.861V203.861C613.5 198.338 609.023 193.861 603.5 193.861Z" fill="#4A4A4A"/>
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M329.588 555.388C329.588 549.863 334.074 545.384 339.59 545.384H466.79C472.314 545.384 476.792 549.859 476.792 555.388V641.835C476.792 641.835 476.792 687.208 403.19 687.208C329.588 687.208 329.588 641.835 329.588 641.835V555.388Z" fill="#4A4A4A"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_61_337">
+			<rect x="0.5" y="0.860657" width="800" height="800" rx="32" fill="white"/>
+			</clipPath>
+			</defs>
+		</svg>
+	-->
+		<svg id="logo1" alt="Happy socket logo" width="800" height="800" viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_61_337)">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.860657H800.5V800.861H0.5V0.860657ZM339.59 545.384C334.074 545.384 329.588 549.863 329.588 555.388V641.835C329.588 641.835 329.588 687.208 403.19 687.208C476.792 687.208 476.792 641.835 476.792 641.835V555.388C476.792 549.859 472.314 545.384 466.79 545.384H339.59ZM603.5 193.861H563.5C557.977 193.861 553.5 198.338 553.5 203.861V373.861C553.5 379.383 557.977 383.861 563.5 383.861H603.5C609.023 383.861 613.5 379.383 613.5 373.861V203.861C613.5 198.338 609.023 193.861 603.5 193.861ZM199.5 169.861H249.5C255.023 169.861 259.5 174.338 259.5 179.861V398.861C259.5 404.383 255.023 408.861 249.5 408.861H199.5C193.977 408.861 189.5 404.383 189.5 398.861V179.861C189.5 174.338 193.977 169.861 199.5 169.861Z" fill="white"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_61_337">
+			<rect x="0.5" y="0.860657" width="800" height="800" rx="32" fill="white"/>
+			</clipPath>
+			</defs>
+		</svg>
+		<svg id="logo2" alt="Happy socket logo" width="800" height="800" viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_61_337)">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.860657H800.5V800.861H0.5V0.860657ZM339.59 545.384C334.074 545.384 329.588 549.863 329.588 555.388V641.835C329.588 641.835 329.588 687.208 403.19 687.208C476.792 687.208 476.792 641.835 476.792 641.835V555.388C476.792 549.859 472.314 545.384 466.79 545.384H339.59ZM603.5 193.861H563.5C557.977 193.861 553.5 198.338 553.5 203.861V373.861C553.5 379.383 557.977 383.861 563.5 383.861H603.5C609.023 383.861 613.5 379.383 613.5 373.861V203.861C613.5 198.338 609.023 193.861 603.5 193.861ZM199.5 169.861H249.5C255.023 169.861 259.5 174.338 259.5 179.861V398.861C259.5 404.383 255.023 408.861 249.5 408.861H199.5C193.977 408.861 189.5 404.383 189.5 398.861V179.861C189.5 174.338 193.977 169.861 199.5 169.861Z" fill="#ff0000"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_61_337">
+			<rect x="0.5" y="0.860657" width="800" height="800" rx="32" fill="white"/>
+			</clipPath>
+			</defs>
+		</svg>
+		<svg id="logo3" alt="Happy socket logo" width="800" height="800" viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_61_337)">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.860657H800.5V800.861H0.5V0.860657ZM339.59 545.384C334.074 545.384 329.588 549.863 329.588 555.388V641.835C329.588 641.835 329.588 687.208 403.19 687.208C476.792 687.208 476.792 641.835 476.792 641.835V555.388C476.792 549.859 472.314 545.384 466.79 545.384H339.59ZM603.5 193.861H563.5C557.977 193.861 553.5 198.338 553.5 203.861V373.861C553.5 379.383 557.977 383.861 563.5 383.861H603.5C609.023 383.861 613.5 379.383 613.5 373.861V203.861C613.5 198.338 609.023 193.861 603.5 193.861ZM199.5 169.861H249.5C255.023 169.861 259.5 174.338 259.5 179.861V398.861C259.5 404.383 255.023 408.861 249.5 408.861H199.5C193.977 408.861 189.5 404.383 189.5 398.861V179.861C189.5 174.338 193.977 169.861 199.5 169.861Z" fill="#00ff00"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_61_337">
+			<rect x="0.5" y="0.860657" width="800" height="800" rx="32" fill="white"/>
+			</clipPath>
+			</defs>
+		</svg>
+		<svg id="logo4" alt="Happy socket logo" width="800" height="800" viewbox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_61_337)">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0.860657H800.5V800.861H0.5V0.860657ZM339.59 545.384C334.074 545.384 329.588 549.863 329.588 555.388V641.835C329.588 641.835 329.588 687.208 403.19 687.208C476.792 687.208 476.792 641.835 476.792 641.835V555.388C476.792 549.859 472.314 545.384 466.79 545.384H339.59ZM603.5 193.861H563.5C557.977 193.861 553.5 198.338 553.5 203.861V373.861C553.5 379.383 557.977 383.861 563.5 383.861H603.5C609.023 383.861 613.5 379.383 613.5 373.861V203.861C613.5 198.338 609.023 193.861 603.5 193.861ZM199.5 169.861H249.5C255.023 169.861 259.5 174.338 259.5 179.861V398.861C259.5 404.383 255.023 408.861 249.5 408.861H199.5C193.977 408.861 189.5 404.383 189.5 398.861V179.861C189.5 174.338 193.977 169.861 199.5 169.861Z" fill="#0000ff"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_61_337">
+			<rect x="0.5" y="0.860657" width="800" height="800" rx="32" fill="white"/>
+			</clipPath>
+			</defs>
+		</svg>
+
+		<p id="me">Michael Williams</p>
 	</body>
 	<script>
-		const me = document.getElementById('me')
+		const logo = document.getElementById('logo')
 		const range = 16
+		const leftrem = 3
+		const toprem = 5
 
-		function updateMe(event) {
-			const x = Math.round(event.pageX * range / window.innerWidth) - range / 2
-			const y = Math.round(event.pageY * range / window.innerHeight) - range / 2
-			document.getElementById('me2').style.left = 3*x + 'px'
-			document.getElementById('me2').style.top = 'calc(-4rem + ' + 3*y + 'px)'
-			document.getElementById('me3').style.left = 5*x + 'px'
-			document.getElementById('me3').style.top = 'calc(-8rem + ' + 6*y + 'px)'
-			document.getElementById('me4').style.left = 7*x + 'px'
-			document.getElementById('me4').style.top = 'calc(-12rem + ' + 9*y + 'px)'
+		function updateLogo(e) {
+			const x = Math.round(e.pageX * range / window.innerWidth) - range / 2
+			const y = Math.round(e.pageY * range / window.innerHeight) - range / 2
+			document.getElementById('logo2').style.left = `calc(50vw - ${leftrem}rem + ${2*x}px)`
+			document.getElementById('logo2').style.top = `calc(50vh - ${toprem}rem + ${2*y}px`
+			document.getElementById('logo3').style.left = `calc(50vw - ${leftrem}rem + ${4*x}px)`
+			document.getElementById('logo3').style.top = `calc(50vh - ${toprem}rem + ${4*y}px`
+			document.getElementById('logo4').style.left = `calc(50vw - ${leftrem}rem + ${6*x}px)`
+			document.getElementById('logo4').style.top = `calc(50vh - ${toprem}rem + ${6*y}px`
 		}
-		document.body.addEventListener('mousemove', updateMe)
+		document.body.addEventListener('mousemove', updateLogo)
+
+		function random(min, max) {
+			return min + Math.random() * (max + 1 - min);
+		}
+
+		const body = document.querySelector('body')
+		const canvasSize = body.offsetWidth * body.offsetHeight
+		const starsFraction = canvasSize / 1000
+
+		const makeStars = (howMany, twinkle) => {
+			for(let i = 0; i < howMany; i++) {
+				// Set up random elements
+				let xPos = random(0, 100)
+				let yPos = random(0, 100)
+				let alpha = random(0.5, 1)
+				let size = random(0, 1)
+				let color = 'rgba(255,255,255,.5)'
+					
+				// Add them to the body
+				const star = document.createElement('div')
+				star.style.position = 'absolute'
+				star.style.left = xPos + '%'
+				star.style.top = yPos + '%'
+				star.style.opacity = alpha
+				star.style.width = size + 'px'
+				star.style.height = size + 'px'
+				star.style.backgroundColor = color
+				if(twinkle) {
+					star.animate([
+						{opacity: .1},
+						{opacity: alpha},
+						{opacity: .1}
+					], {
+						duration: random(1000, 3000),
+						iterations: Infinity
+					}
+				)}
+				document.body.appendChild(star)
+			}
+		}
+		makeStars(starsFraction, true)
+		makeStars(starsFraction, false)
 	</script>
 </html>

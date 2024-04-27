@@ -64,10 +64,10 @@ html {
 	padding: 0;
 	outline: 0;
 	border: none;
+	overflow: hidden;
 }
 :root {
-	-ms-overflow-style: -ms-autohiding-scrollbar;
-	overflow-y: scroll;
+	overflow: hidden;
 	-webkit-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
@@ -276,10 +276,6 @@ h3 {
 }
 html {
 	color: #000;
-	background-color: #0af;
-}
-body {
-	background-color: rgb(0, 27, 41);
 }
 code {
 	background-color: #000;
@@ -308,6 +304,12 @@ code {
 	margin-bottom: 1rem;
 	overflow: scroll;
 }
+/**************************************** end reset ****************************************/
+
+html, body {
+	background: linear-gradient(black, rgb(0, 29, 60));
+}
+
 #logo {
 	height: 3rem;
 	width: 3rem;
@@ -315,7 +317,7 @@ code {
 	margin: 2rem auto;
 	display: block;
 }
-#homehero {
+body {
 	text-align: center;
 	padding: 1rem;
 	height: 100%;
@@ -325,35 +327,37 @@ code {
 	justify-content: center;
 	align-items: center;
 }
-#homehero p {
+#me {
 	font-size: 4rem;
 	line-height: 4rem;
-	margin: 0 auto;
-	font-family: 'Permanent Marker', sans-serif;
+	font-family: 'VT323', monospace;
+	color: white;
+	position: relative;
+	top: 2rem;
 }
-#me1 {
+#logo1, #logo2, #logo3, #logo4 {
+	width: 6rem;
+	height: 6rem;
+}
+#logo1 {
 	position: relative;
 	z-index: 5;
-	color: white;
 }
-#me2 {
-	position: relative;
-	left: 12px;
-	top: calc(-4rem + 12px);
-	color: #0af;
+#logo2 {
+	position: absolute;
+	left: calc(50vw - 3rem + 8px);
+	top: calc(50vh - 5rem + 8px);
 	z-index: 4;
 }
-#me3 {
-	position: relative;
-	left: 24px;
-	top: calc(-8rem + 24px);
-	color: rgb(0, 126, 188);
+#logo3 {
+	position: absolute;
+	left: calc(50vw - 3rem + 16px);
+	top: calc(50vh - 5rem + 16px);
 	z-index: 3;
 }
-#me4 {
-	position: relative;
-	left: 36px;
-	top: calc(-12rem + 36px);
-	color: rgb(0, 82, 123);
+#logo4 {
+	position: absolute;
+	left: calc(50vw - 3rem + 24px);
+	top: calc(50vh - 5rem + 24px);
 	z-index: 2;
 }
