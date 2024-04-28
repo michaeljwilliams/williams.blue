@@ -332,32 +332,32 @@ body {
 	line-height: 4rem;
 	font-family: 'VT323', monospace;
 	color: white;
-	position: relative;
-	top: 2rem;
+	position: absolute;
+	top: calc(50vh + 0rem);
 }
 #logo1, #logo2, #logo3, #logo4 {
-	width: 6rem;
-	height: 6rem;
+	width: 4rem;
+	height: 4rem;
+	--leftrem: 2rem;
+	--toprem: 6rem;
+	position: absolute;
 }
 #logo1 {
-	position: relative;
 	z-index: 5;
+	top: calc(50vh - var(--toprem));
 }
 #logo2 {
-	position: absolute;
-	left: calc(50vw - 3rem + 8px);
-	top: calc(50vh - 5rem + 8px);
+	left: calc(50vw - var(--leftrem) + 8px);
+	top: calc(50vh - var(--toprem) + 8px);
 	z-index: 4;
 }
 #logo3 {
-	position: absolute;
-	left: calc(50vw - 3rem + 16px);
-	top: calc(50vh - 5rem + 16px);
+	left: calc(50vw - var(--leftrem) + 16px);
+	top: calc(50vh - var(--toprem) + 16px);
 	z-index: 3;
 }
 #logo4 {
-	position: absolute;
-	left: calc(50vw - 3rem + 24px);
-	top: calc(50vh - 5rem + 24px);
+	left: calc(50vw - var(--leftrem) + 24px);
+	top: calc(50vh - var(--toprem) + 24px);
 	z-index: 2;
 }
