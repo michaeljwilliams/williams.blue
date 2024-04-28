@@ -11,6 +11,66 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet" />
+
+		<script defer>
+			const logo = document.getElementById('logo')
+			const range = 16
+			const leftrem = 3
+			const toprem = 5
+
+			function updateLogo(e) {
+				const x = Math.round(e.pageX * range / window.innerWidth) - range / 2
+				const y = Math.round(e.pageY * range / window.innerHeight) - range / 2
+				document.getElementById('logo2').style.left = `calc(50vw - ${leftrem}rem + ${2*x}px)`
+				document.getElementById('logo2').style.top = `calc(50vh - ${toprem}rem + ${2*y}px`
+				document.getElementById('logo3').style.left = `calc(50vw - ${leftrem}rem + ${4*x}px)`
+				document.getElementById('logo3').style.top = `calc(50vh - ${toprem}rem + ${4*y}px`
+				document.getElementById('logo4').style.left = `calc(50vw - ${leftrem}rem + ${6*x}px)`
+				document.getElementById('logo4').style.top = `calc(50vh - ${toprem}rem + ${6*y}px`
+			}
+			//document.body.addEventListener('mousemove', updateLogo)
+
+			function random(min, max) {
+				return min + Math.random() * (max + 1 - min);
+			}
+
+			const body = document.querySelector('body')
+			const canvasSize = body.offsetWidth * body.offsetHeight
+			const starsFraction = canvasSize / 1000
+
+			const makeStars = (howMany, twinkle) => {
+				for(let i = 0; i < howMany; i++) {
+					// Set up random elements
+					let xPos = random(0, 100)
+					let yPos = random(0, 100)
+					let alpha = random(0.5, 1)
+					let size = random(0, 1)
+					let color = `rgba(${random(150, 255)},${random(150, 255)},${random(150, 255)},${random(.3, 1)})`
+						
+					// Add them to the body
+					const star = document.createElement('div')
+					star.style.position = 'absolute'
+					star.style.left = xPos + '%'
+					star.style.top = yPos + '%'
+					star.style.opacity = alpha
+					star.style.width = size + 'px'
+					star.style.height = size + 'px'
+					star.style.backgroundColor = color
+					if(twinkle) {
+						star.animate([
+							{opacity: .1},
+							{opacity: alpha},
+							{opacity: .1}
+						], {
+							duration: random(1000, 4000),
+							iterations: Infinity
+						}
+					)}
+					document.body.appendChild(star)
+				}
+			}
+			makeStars(starsFraction, true)
+		</script>
 	</head>
 
 	<body>
@@ -55,69 +115,9 @@
 			</clipPath>
 			</defs>
 		</svg>
-	-->
-
+		-->
 		<p id="me">
 			<span class="nobreaks"><span id="me1">m</span><span id="me2">i</span><span id="me3">c</span><span id="me4">h</span><span id="me5">a</span><span id="me6">e</span><span id="me7">l</span></span><span id="me8"> </span><span class="nobreaks"><span id="me9">w</span><span id="me10">i</span><span id="me11">l</span><span id="me12">l</span><span id="me13">i</span><span id="me14">a</span><span id="me15">m</span><span id="me16">s</span><span id="me_cursor">_</span></span>
 		</p>
 	</body>
-	<script>
-		const logo = document.getElementById('logo')
-		const range = 16
-		const leftrem = 3
-		const toprem = 5
-
-		function updateLogo(e) {
-			const x = Math.round(e.pageX * range / window.innerWidth) - range / 2
-			const y = Math.round(e.pageY * range / window.innerHeight) - range / 2
-			document.getElementById('logo2').style.left = `calc(50vw - ${leftrem}rem + ${2*x}px)`
-			document.getElementById('logo2').style.top = `calc(50vh - ${toprem}rem + ${2*y}px`
-			document.getElementById('logo3').style.left = `calc(50vw - ${leftrem}rem + ${4*x}px)`
-			document.getElementById('logo3').style.top = `calc(50vh - ${toprem}rem + ${4*y}px`
-			document.getElementById('logo4').style.left = `calc(50vw - ${leftrem}rem + ${6*x}px)`
-			document.getElementById('logo4').style.top = `calc(50vh - ${toprem}rem + ${6*y}px`
-		}
-		//document.body.addEventListener('mousemove', updateLogo)
-
-		function random(min, max) {
-			return min + Math.random() * (max + 1 - min);
-		}
-
-		const body = document.querySelector('body')
-		const canvasSize = body.offsetWidth * body.offsetHeight
-		const starsFraction = canvasSize / 1000
-
-		const makeStars = (howMany, twinkle) => {
-			for(let i = 0; i < howMany; i++) {
-				// Set up random elements
-				let xPos = random(0, 100)
-				let yPos = random(0, 100)
-				let alpha = random(0.5, 1)
-				let size = random(0, 1)
-				let color = `rgba(${random(150, 255)},${random(150, 255)},${random(150, 255)},${random(.3, 1)})`
-					
-				// Add them to the body
-				const star = document.createElement('div')
-				star.style.position = 'absolute'
-				star.style.left = xPos + '%'
-				star.style.top = yPos + '%'
-				star.style.opacity = alpha
-				star.style.width = size + 'px'
-				star.style.height = size + 'px'
-				star.style.backgroundColor = color
-				if(twinkle) {
-					star.animate([
-						{opacity: .1},
-						{opacity: alpha},
-						{opacity: .1}
-					], {
-						duration: random(1000, 4000),
-						iterations: Infinity
-					}
-				)}
-				document.body.appendChild(star)
-			}
-		}
-		makeStars(starsFraction, true)
-	</script>
 </html>
