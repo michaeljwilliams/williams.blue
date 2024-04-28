@@ -12,15 +12,10 @@
 		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet" />
 
-		<script defer>
-			const logo = document.getElementById('logo')
-			const range = 16
-			const leftrem = 3
-			const toprem = 5
-
-			function updateLogo(e) {
-				const x = Math.round(e.pageX * range / window.innerWidth) - range / 2
-				const y = Math.round(e.pageY * range / window.innerHeight) - range / 2
+		<script>
+			const updateLogo = event => {
+				const x = Math.round(event.pageX * range / window.innerWidth) - range / 2
+				const y = Math.round(event.pageY * range / window.innerHeight) - range / 2
 				document.getElementById('logo2').style.left = `calc(50vw - ${leftrem}rem + ${2*x}px)`
 				document.getElementById('logo2').style.top = `calc(50vh - ${toprem}rem + ${2*y}px`
 				document.getElementById('logo3').style.left = `calc(50vw - ${leftrem}rem + ${4*x}px)`
@@ -30,13 +25,9 @@
 			}
 			//document.body.addEventListener('mousemove', updateLogo)
 
-			function random(min, max) {
+			const random = (min, max) => {
 				return min + Math.random() * (max + 1 - min);
 			}
-
-			const body = document.querySelector('body')
-			const canvasSize = body.offsetWidth * body.offsetHeight
-			const starsFraction = canvasSize / 1000
 
 			const makeStars = (howMany, twinkle) => {
 				for(let i = 0; i < howMany; i++) {
@@ -69,7 +60,19 @@
 					document.body.appendChild(star)
 				}
 			}
-			makeStars(starsFraction, true)
+
+			document.addEventListener("DOMContentLoaded", (event) => {
+				const logo = document.getElementById('logo')
+				const range = 16
+				const leftrem = 3
+				const toprem = 5
+
+				const body = document.querySelector('body')
+				const canvasSize = body.offsetWidth * body.offsetHeight
+				const starsFraction = canvasSize / 1000
+
+				makeStars(starsFraction, true)
+			})
 		</script>
 	</head>
 
