@@ -328,8 +328,8 @@ body {
 	align-items: center;
 }
 #me {
-	font-size: 4rem;
-	line-height: 4rem;
+	font-size: 3rem;
+	line-height: 3rem;
 	font-family: 'VT323', monospace;
 	color: white;
 	position: absolute;
@@ -363,8 +363,8 @@ body {
 }
 
 #me_cursor {
-	width: 1.4rem;
-	font-size: 3rem;
+	width: 1rem;
+	font-size: 2rem;
 	visibility: visible;
 	animation: cursor_blink 1s linear infinite;
 }
